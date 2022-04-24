@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="373.0" prefWidth="716.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+    <stylesheets>
+        <URL value="@/resources/style.css" />
+    </stylesheets>
+   <children>
+      <JFXButton layoutX="81.0" layoutY="144.0" onAction="#addInvoice" prefHeight="65.0" prefWidth="162.0" styleClass="normalButton" text="فاتورة جديدة">
+         <font>
+            <Font name="Arabic Typesetting" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="291.0" layoutY="144.0" onAction="#addItem" prefHeight="65.0" prefWidth="162.0" styleClass="normalButton" stylesheets="@../resources/style.css" text="اضافة الاصناف">
+         <font>
+            <Font name="Arabic Typesetting" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="492.0" layoutY="144.0" onAction="#addCustomer" prefHeight="65.0" prefWidth="162.0" styleClass="normalButton" stylesheets="@../resources/style.css" text="اضافة عميل">
+         <font>
+            <Font name="Arabic Typesetting" size="30.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

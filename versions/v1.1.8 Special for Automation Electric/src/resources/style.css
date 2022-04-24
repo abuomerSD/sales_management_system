@@ -1,0 +1,107 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+
+.background{
+    -fx-background-color:#ffffff;
+}
+
+.cancelButton{
+    -fx-background-color:#D32F2F;
+    -fx-text-fill:#ffffff;
+    //-fx-background-radius:10,10,10,10;
+}
+
+.cancelButton:hover{
+    -fx-background-color:#F44336;
+}
+
+.normalButton{
+    -fx-background-color:#512DA8;
+    //-fx-background-radius:10,10,10,10;
+    -fx-text-fill:white;
+    
+}
+
+.normalButton:hover{
+    -fx-background-color:#673AB7;
+}
+
+.editButton{
+    -fx-background-color:#7B1FA2;
+    //-fx-background-radius:10,10,10,10;
+}
+
+.editButton:hover{
+    -fx-background-color:#9C27B0;
+}
+
+.mainStageRightVbox{
+    -fx-background-color: #7B1FA2;
+}
+
+.mainStageButtons{
+    -fx-fill: transparent;
+    -fx-text-fill: white;
+    
+}
+
+
+.option1{
+    -fx-background-color:#D32F2F;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option1:hover{
+    -fx-background-color:#F44336;
+}
+
+.option2{
+    -fx-background-color:#C2185B;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option2:hover{
+    -fx-background-color:#E91E63;
+}
+
+.option3{
+    -fx-background-color:#7B1FA2;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option3:hover{
+    -fx-background-color:#9C27B0;
+}
+
+.option4{
+    -fx-background-color:#512DA8;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option4:hover{
+    -fx-background-color:#673AB7;
+}
+
+.option5{
+    -fx-background-color:#1976D2;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option5:hover{
+    -fx-background-color:#2196F3;
+}
+
+.option6{
+    -fx-background-color:#2196F3;
+    -fx-background-radius:10,10,10,10;
+}
+
+.option6:hover{
+    -fx-background-color:#009688;
+}

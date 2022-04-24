@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="salesInvoiceOriginalDate" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c8b628be-7462-4ddd-8527-4444fa128309">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<parameter name="invoiceNumber" class="java.lang.Integer"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="tax" class="java.lang.Double"/>
+	<parameter name="discount" class="java.lang.Double"/>
+	<parameter name="total" class="java.lang.Double"/>
+	<parameter name="date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="productName" class="java.lang.String"/>
+	<field name="productQuantity" class="java.lang.Double"/>
+	<field name="productPrice" class="java.lang.Double"/>
+	<field name="productTotalSale" class="java.lang.Double"/>
+	<field name="colNumber" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="192" splitType="Stretch">
+			<staticText>
+				<reportElement x="442" y="150" width="88" height="20" forecolor="#4C18F5" uuid="827f0028-a86c-4a17-bfd2-1ccb344a6849"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[رقم الفاتورة :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="171" width="88" height="20" forecolor="#4C18F5" uuid="4bd2f221-4701-42c1-b0ee-969890c0bc5d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[اسم العميل :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="241" y="151" width="199" height="20" uuid="25eb8b3d-f6eb-4aa2-a8e9-128c20f97ed4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{invoiceNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="172" width="199" height="20" uuid="297fc814-dd04-4bc4-a341-089d74594a33"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="144" y="149" width="59" height="20" forecolor="#4C18F5" uuid="ae19b5bb-68a7-454c-960a-1bd3eefbef3e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[التاريخ :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="110" width="157" height="30" forecolor="#F01916" uuid="46b5d973-4645-4705-bdb0-3928b2db11d2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[فاتورة مبيعات]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="145" width="113" height="30" uuid="29ea90f7-2cc3-4b1c-bae7-27e36dd8de60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="12" width="550" height="79" forecolor="#28B559" uuid="ed87e83b-ec19-4b0b-a4d9-e4be4b5cd95a"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="26"/>
+				</textElement>
+				<text><![CDATA[Aldoria For Advanced Business]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="300" y="31" width="169" height="30" forecolor="#FF0400" backcolor="#131A9C" uuid="503375ba-9a35-41a0-af5b-77d73f4e2cc0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a728b3c-91b7-4301-9170-c8b5ae0b06ba"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[اسم الصنف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="31" width="70" height="30" forecolor="#FF0400" backcolor="#131A9C" uuid="b4d5d2d2-b350-43f3-a351-ea954ee3fe57">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c76f6352-fb0f-4aa0-88bc-3997da25dbac"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[العدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="31" width="80" height="30" forecolor="#FF0400" backcolor="#131A9C" uuid="b6fd75f0-d385-4305-9d99-d825f7b48f2b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91c7924d-3ad5-42ac-9ca8-23a000ab5163"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[السعر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="31" width="100" height="30" forecolor="#FF0400" backcolor="#131A9C" uuid="50d9894d-dc6b-4925-aed6-335641d5f9c6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8a1c598-87e1-4989-8f17-4e2b6bad05c3"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الاجمالي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="31" width="60" height="30" forecolor="#FF0400" uuid="5639c086-ad46-4123-a9d8-13af7898902c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c05e3bfa-cd61-4c56-8c23-a0bc22912e04"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الرقم]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="300" y="0" width="169" height="30" uuid="249ec97e-1a8a-41d3-beaa-aa38e9c64675">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6a728b3c-91b7-4301-9170-c8b5ae0b06ba"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="0" width="70" height="30" uuid="e84c634b-686a-46e3-8946-1e32cc48e9ce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c76f6352-fb0f-4aa0-88bc-3997da25dbac"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productQuantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="80" height="30" uuid="e0609965-6c6d-4373-bfc7-6072e1f3d6f4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="91c7924d-3ad5-42ac-9ca8-23a000ab5163"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="0" width="100" height="30" uuid="3c306f6e-4ac9-4e37-865e-7e86818ca2a7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b8a1c598-87e1-4989-8f17-4e2b6bad05c3"/>
+				</reportElement>
+				<box>
+					<pen lineStyle="Solid"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productTotalSale}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="469" y="0" width="60" height="30" uuid="9de58b30-9b22-4145-ae46-8438854fe4a5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c05e3bfa-cd61-4c56-8c23-a0bc22912e04"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{colNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="110" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="80" width="74" height="30" uuid="a4da201b-071e-4d2a-b3f1-a03fc869b7aa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="80" y="80" width="85" height="30" uuid="d9b2e4e6-ea22-4a04-9285-ff8d80ff394e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="495" y="81" width="80" height="29" uuid="271089e8-276a-4051-bea4-45f9961369b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="0" y="5" width="550" height="65" uuid="5f6f3f83-7769-4d76-b9c9-f96976c4727b"/>
+				<box>
+					<pen lineWidth="1.75" lineStyle="Solid"/>
+				</box>
+				<staticText>
+					<reportElement x="465" y="1" width="77" height="19" uuid="22a9d1f7-a625-424d-b916-922e7aeed9b4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="12"/>
+					</textElement>
+					<text><![CDATA[رقم الهاتف: ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="459" y="20" width="85" height="19" uuid="f2ae12f0-0958-441c-be41-9ebb4243afd0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="12"/>
+					</textElement>
+					<text><![CDATA[البريد الالكتروني :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="296" y="2" width="170" height="19" uuid="693d6236-3562-4727-9106-7c855811baec"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="12"/>
+					</textElement>
+					<text><![CDATA[-----]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="287" y="21" width="170" height="19" uuid="a532dcab-edd8-447e-a9ca-ba573e8186d6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="12"/>
+					</textElement>
+					<text><![CDATA[-----]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="164" y="1" width="93" height="19" uuid="5e9b61db-3a61-4834-aaeb-58d4f34b8960"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="12"/>
+					</textElement>
+					<text><![CDATA[العنوان :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="1" width="160" height="19" uuid="a027497c-b4c2-484e-9746-3deae4b91e76"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10"/>
+					</textElement>
+					<text><![CDATA[شارع الهواء شمال استوب الإنقاذ]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="88">
+			<rectangle>
+				<reportElement x="50" y="0" width="479" height="70" uuid="2a3306f8-ba1f-48c1-a2a9-8cfe42c19c39"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="150" y="0" width="53" height="25" uuid="da4805db-b53f-49d3-a63f-5d8f37ccc0db"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[الضريبة]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="0" width="100" height="25" uuid="9f98b3ce-e2ca-4549-880f-53762332a5ee"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="25" width="100" height="19" uuid="374fa039-106c-4049-8db6-09b0bba86d0b"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{discount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="25" width="53" height="19" uuid="08d7cc5f-6ae4-4e98-9732-7b530debd67f"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[الخصم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="43" width="53" height="27" uuid="320cf1b8-af05-447f-8295-9005e7dac193"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12"/>
+				</textElement>
+				<text><![CDATA[الاجمالي]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="44" width="100" height="26" uuid="e592b5db-b642-46f8-83fe-0770a2526efe"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

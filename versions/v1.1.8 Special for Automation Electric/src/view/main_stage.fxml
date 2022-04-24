@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1366.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainStageController">
+    <stylesheets>
+        <URL value="@/resources/style.css" />
+    </stylesheets>
+   <children>
+      <BorderPane fx:id="borderBane" layoutX="8.0" layoutY="235.0" prefHeight="720.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <VBox prefHeight="720.0" prefWidth="213.0" styleClass="mainStageRightVbox" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton fx:id="btnSalesManagement" graphicTextGap="6.0" onAction="#showSalesManagmentStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="إدارة المبيعات" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="SHOPPING_CART" size="30" />
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPurchaseManagement" graphicTextGap="6.0" onAction="#showPurchaseManagmentStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="إدارة المشتروات" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="SIGN_IN" size="30" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton graphicTextGap="6.0" onAction="#showInventoryManagmentStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="إدارة المخزون" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="ARCHIVE" size="30" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAccount" graphicTextGap="6.0" onAction="#showAccountManagmentStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="إدارة الحسابات" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="CALCULATOR" size="30" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="btnSettings" graphicTextGap="6.0" onAction="#showSettingsStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="إعدادات" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="GEAR" size="30" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton graphicTextGap="6.0" onAction="#showAboutStage" prefHeight="83.0" prefWidth="352.0" styleClass="mainStageRightVbox" text="حول البرنامج" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="INFO_CIRCLE" size="30" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

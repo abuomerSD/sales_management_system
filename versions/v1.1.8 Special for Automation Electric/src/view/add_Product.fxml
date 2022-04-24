@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="555.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddProductController">
+    <stylesheets>
+        <URL value="@/resources/style.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="507.0" prefWidth="680.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXTextField fx:id="txtProductCode" labelFloat="true" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="660.0" promptText="كود الصنف">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtProductName" labelFloat="true" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="660.0" promptText="اسم الصنف">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtProductQuantity" labelFloat="true" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="660.0" promptText="العدد">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtProducyCost" labelFloat="true" nodeOrientation="RIGHT_TO_LEFT" prefHeight="43.0" prefWidth="660.0" promptText="سعر التكلفة">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="txtProductPrice" labelFloat="true" nodeOrientation="RIGHT_TO_LEFT" onAction="#addSingleProduct" prefHeight="43.0" prefWidth="660.0" promptText="سعر البيع">
+               <font>
+                  <Font name="Calibri" size="21.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <JFXButton fx:id="btnAddMultiProducts" onAction="#addMultiProduct" prefHeight="103.0" prefWidth="276.0" styleClass="normalButton" text="اضافة جميع الاصناف">
+                     <font>
+                        <Font name="Calibri Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnAddSingleProduct" onAction="#addSingleProduct" prefHeight="100.0" prefWidth="283.0" styleClass="normalButton" text="اضاقة صنف">
+                     <font>
+                        <Font name="Calibri Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <ProgressBar fx:id="progressBar" prefHeight="37.0" prefWidth="554.0" progress="0.0" />
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="555.0">
+               <children>
+                  <Label fx:id="lbAddMultiProducts">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

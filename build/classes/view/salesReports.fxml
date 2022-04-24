@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="298.0" prefWidth="521.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesReportsController">
+    <stylesheets>
+        <URL value="@/resources/style.css" />
+    </stylesheets>
+   <children>
+      <VBox layoutX="195.0" layoutY="42.0" prefHeight="298.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="60.0" prefWidth="521.0">
+               <children>
+                  <Label text="تقارير المبيعات">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="txt" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="521.0">
+               <children>
+                  <TextField fx:id="txtCustomerID" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="321.0" promptText="رقم العميل">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="56.0" prefWidth="521.0">
+               <children>
+                  <DatePicker fx:id="txtFromDate" layoutX="337.0" layoutY="26.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="174.0" promptText="من تاريخ">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="128.0" prefHeight="56.0" prefWidth="521.0">
+               <children>
+                  <TextField fx:id="txtToInvoice" alignment="CENTER_RIGHT" promptText="الى فاتورة رقم">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtFromInvoice" alignment="CENTER_RIGHT" layoutX="307.0" layoutY="19.0" promptText="من فاتورة رقم">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="184.0" prefHeight="70.0" prefWidth="521.0">
+               <children>
+                  <JFXButton onAction="#printReport" prefHeight="59.0" prefWidth="166.0" styleClass="normalButton" text="طباعة التقرير">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

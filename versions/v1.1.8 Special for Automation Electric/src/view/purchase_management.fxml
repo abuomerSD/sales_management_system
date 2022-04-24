@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PurchaseManagementController">
+   <children>
+      <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="580.0" prefWidth="846.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="186.0" prefWidth="846.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#showNewPurchaseInvoiceStage" prefHeight="156.0" prefWidth="247.0" styleClass="option3">
+                     <children>
+                        <Label text="فاتورة مشتروات" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <FontAwesomeIcon fill="WHITE" iconName="SHARE_SQUARE" size="40">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </FontAwesomeIcon>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#showPurchaseInvoiceListStage" prefHeight="156.0" prefWidth="247.0" styleClass="option2">
+                     <children>
+                        <Label text="قائمة فواتير المشتروات" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <FontAwesomeIcon fill="WHITE" iconName="SHARE_SQUARE" size="40">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </FontAwesomeIcon>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#showPurchaseInvoiceReportsStage" prefHeight="156.0" prefWidth="247.0" styleClass="option1">
+                     <children>
+                        <Label text="تقارير المشتروات" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <FontAwesomeIcon fill="WHITE" iconName="LIST_UL" size="40">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </FontAwesomeIcon>
+                        <Label fx:id="lbCustomersCount" text="عدد العملاء" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
