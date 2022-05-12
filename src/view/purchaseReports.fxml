@@ -10,16 +10,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="260.0" prefWidth="521.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesReportsController">
+<AnchorPane id="AnchorPane" prefHeight="260.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PurchaseReportsController">
     <stylesheets>
         <URL value="@/resources/style.css" />
     </stylesheets>
-   <children>
+    
+       <children>
       <VBox layoutX="195.0" layoutY="42.0" prefHeight="298.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="521.0">
                <children>
-                  <Label text="تقارير المبيعات">
+                  <Label text="تقارير المشتروات">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -28,7 +29,7 @@
             </HBox>
             <HBox fx:id="txt" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="521.0">
                <children>
-                  <TextField fx:id="txtCustomerID" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="321.0" promptText="رقم العميل">
+                  <TextField fx:id="txtSupplierID" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="321.0" promptText="رقم المورد">
                      <font>
                         <Font size="18.0" />
                      </font>

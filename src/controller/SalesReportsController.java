@@ -6,6 +6,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.scene.control.TextField;
 import model.InvoiceDetails;
 import model.InvoiceHeader;
 import resources.DatabaseHandler;
+import resources.ReportViewer;
 
 /**
  * FXML Controller class
@@ -35,8 +37,8 @@ public class SalesReportsController implements Initializable {
         @FXML
     private TextField txtFromInvoice;
 
-    @FXML
-    private DatePicker txtFromDate;
+//    @FXML
+//    private DatePicker txtFromDate;
 
 //    @FXML
 //    private DatePicker txtToDate;
@@ -52,7 +54,7 @@ public class SalesReportsController implements Initializable {
     {
         
         String customerID = txtCustomerID.getText();
-        String fromDate = txtFromDate.getValue().toString();
+//        String fromDate = txtFromDate.getValue().toString();
         //String toDate = txtToDate.getValue().toString();
         String fromInvoice = txtFromInvoice.getText();
         String toInvoice = txtToInvoice.getText();
@@ -62,6 +64,7 @@ public class SalesReportsController implements Initializable {
         if(fromInvoice.equals("") || toInvoice.equals(""))
         {
             sql = sql;
+            System.out.println(sql);
         }
         else
         {
@@ -70,26 +73,33 @@ public class SalesReportsController implements Initializable {
         }
         
         if(customerID.equals(""))
+        {
             sql = sql;
+            System.out.println(sql);  
+        }
+            
         else
         {
             sql = sql.concat("AND customerID =  "+ customerID );
             System.out.println(sql);
         }
         
-        if(fromDate.equals(""))
-        {
-            sql = sql;
-        }
-        else
-        {
-            sql = sql.concat(" and date >= "+fromDate);
-            System.out.println(sql);
-        }
+//        if(fromDate.equals(""))
+//        {
+//            sql = sql;
+//        }
+//        else
+//        {
+//            sql = sql.concat(" and date >= "+fromDate);
+//            System.out.println(sql);
+//        }
         
         
         List<InvoiceHeader> invoiceHeaderList = DatabaseHandler.getAllSalesInvoicesHeadersBySQL(sql);
         invoiceHeaderList.forEach(System.out::println);
+        
+        ReportViewer reportViewer = new ReportViewer();
+        reportViewer.showReport("SalesInvoicesReport.jrxml", new HashMap(), invoiceHeaderList);
     }
     
 }

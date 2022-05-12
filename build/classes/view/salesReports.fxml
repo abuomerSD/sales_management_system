@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="298.0" prefWidth="521.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesReportsController">
+<AnchorPane id="AnchorPane" prefHeight="260.0" prefWidth="521.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SalesReportsController">
     <stylesheets>
         <URL value="@/resources/style.css" />
     </stylesheets>
@@ -36,15 +36,6 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="56.0" prefWidth="521.0">
-               <children>
-                  <DatePicker fx:id="txtFromDate" layoutX="337.0" layoutY="26.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="174.0" promptText="من تاريخ">
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </DatePicker>
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="128.0" prefHeight="56.0" prefWidth="521.0">
