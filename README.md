@@ -22,6 +22,7 @@ JavaFX Application to Manage Sales.
 - first you must have java 8 installed in your machine.
 - go to dist Folder.
 - double click on the jar file.
+- you have to put all the reports inside the path "E:\Step Sales\Reports".
 
 ## the Application Departments :
 this Application Contain the Following Main Parts:
