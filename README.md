@@ -13,12 +13,20 @@ JavaFX Application to Manage Sales.
 
 
 ## the technoliges used :
-1- javaFX.
-2- Java JDBC Library to Connect the DataBase.
-3- SQLite DataBase.
-4- Jasper Report for reporting .
+- javaFX.
+- Java JDBC Library to Connect the DataBase.
+- SQLite DataBase.
+- Jasper Report for reporting .
 
 ## How to use it :
+- first you must have java 8 installed in your machine.
+- go to dist Folder.
+- double click on the jar file.
 
-
+## the Application Departments :
+this Application Contain the Following Main Parts:
+- Sales Management .
+- Purchase Management .
+- Inventory Management .
+- Customers and Suppliers Management.
 
