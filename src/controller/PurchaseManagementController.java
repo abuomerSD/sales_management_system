@@ -41,7 +41,8 @@ public class PurchaseManagementController implements Initializable {
     
     @FXML
     private void showPurchaseInvoiceReportsStage(){
-        
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/purchaseReports.fxml", "قائمة فواتير المشتروات", false); 
     }
     
     

@@ -74,7 +74,7 @@ public class PurchaseReportsController implements Initializable {
         invoiceHeaderList.forEach(System.out::println);
         
         ReportViewer reportViewer = new ReportViewer();
-        reportViewer.showReport("SalesInvoicesReport.jrxml", new HashMap(), invoiceHeaderList);
+        reportViewer.showReport("PurchaseInvoicesReport.jrxml", new HashMap(), invoiceHeaderList);
         
     }
     
