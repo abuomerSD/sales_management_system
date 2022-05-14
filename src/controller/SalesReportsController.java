@@ -36,13 +36,7 @@ public class SalesReportsController implements Initializable {
     
         @FXML
     private TextField txtFromInvoice;
-
-//    @FXML
-//    private DatePicker txtFromDate;
-
-//    @FXML
-//    private DatePicker txtToDate;
-
+        
     @FXML
     private TextField txtCustomerID;
 
@@ -54,8 +48,6 @@ public class SalesReportsController implements Initializable {
     {
         
         String customerID = txtCustomerID.getText();
-//        String fromDate = txtFromDate.getValue().toString();
-        //String toDate = txtToDate.getValue().toString();
         String fromInvoice = txtFromInvoice.getText();
         String toInvoice = txtToInvoice.getText();
         
@@ -66,34 +58,23 @@ public class SalesReportsController implements Initializable {
             sql = sql;
             System.out.println(sql);
         }
-        else
+        if(customerID.isEmpty() && !fromInvoice.isEmpty() && ! toInvoice.isEmpty())
         {
             sql = sql.concat(" WHERE invoiceNumber >= "+ fromInvoice +" and invoiceNumber <="+toInvoice+" ");
             System.out.println(sql);
         }
-        
-        if(customerID.equals(""))
-        {
-            sql = sql;
-            System.out.println(sql);  
-        }
             
-        else
+        if (!customerID.isEmpty() && !fromInvoice.isEmpty() && !toInvoice.isEmpty())
         {
-            sql = sql.concat("AND customerID =  "+ customerID );
+            sql = sql.concat(" AND customerID =  "+ customerID );
             System.out.println(sql);
         }
         
-//        if(fromDate.equals(""))
-//        {
-//            sql = sql;
-//        }
-//        else
-//        {
-//            sql = sql.concat(" and date >= "+fromDate);
-//            System.out.println(sql);
-//        }
-        
+        if (!customerID.isEmpty() && fromInvoice.isEmpty() && toInvoice.isEmpty())
+        {
+            sql = sql.concat(" WHERE customerID =  "+ customerID);
+            System.out.println(sql);
+        } 
         
         List<InvoiceHeader> invoiceHeaderList = DatabaseHandler.getAllSalesInvoicesHeadersBySQL(sql);
         invoiceHeaderList.forEach(System.out::println);

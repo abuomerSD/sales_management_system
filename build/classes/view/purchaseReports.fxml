@@ -27,7 +27,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox fx:id="txt" alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="521.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="521.0">
                <children>
                   <TextField fx:id="txtSupplierID" alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="321.0" promptText="رقم المورد">
                      <font>

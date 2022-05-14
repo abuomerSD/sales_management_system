@@ -1233,4 +1233,30 @@ public class DatabaseHandler {
         return list;
     }
     
+    public static List<PurchaseInvoiceHeader> getAllPurchaseInvoicesHeadersBySQL(String sql){
+        List<PurchaseInvoiceHeader> list = new ArrayList();
+        con = getConnection();
+        try
+        {
+            ResultSet rs = execQuery(sql);
+            while(rs.next())
+            {
+                PurchaseInvoiceHeader invoiceHeader = new PurchaseInvoiceHeader();
+                invoiceHeader.setSupplierName(rs.getString("SupplierName"));
+                invoiceHeader.setDate(rs.getString("date"));
+                invoiceHeader.setId(rs.getInt("id"));
+                invoiceHeader.setPurchaeInvoiceTotalCost(rs.getDouble("Total"));
+                invoiceHeader.setSupplierID(rs.getInt("SupplierID"));
+                list.add(invoiceHeader);
+            }
+        }
+        catch (Exception ex)
+        {
+            AlertMaker.showErrorAlert(ex.getMessage());
+            ex.printStackTrace();
+        }
+        
+        return list;
+    }
+    
 }
