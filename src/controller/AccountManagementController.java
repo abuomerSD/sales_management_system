@@ -45,7 +45,8 @@ public class AccountManagementController implements Initializable {
     
     @FXML
     private void showCustomersListStage(){
-        
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/customersList.fxml", "اضافة مورد", false);
     }
     
     @FXML 

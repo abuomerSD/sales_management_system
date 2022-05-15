@@ -7,6 +7,7 @@ package resources;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -1257,6 +1258,25 @@ public class DatabaseHandler {
         }
         
         return list;
+    }
+    
+    public static void updateCustomerName(Customer customer)
+    {
+        String sql = "UPDATE tbCustomer SET name = ? WHERE id = ?;";
+        try
+        {
+            con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getId());
+            
+            ps.executeUpdate();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            AlertMaker.showErrorAlert(ex.getMessage());
+        }
     }
     
 }
