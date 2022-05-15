@@ -1279,4 +1279,23 @@ public class DatabaseHandler {
         }
     }
     
+     public static void updateSupplierName(Supplier supplier)
+    {
+        String sql = "UPDATE tbSupplier SET supplierName = ? WHERE id = ? ;";
+        try
+        {
+            con = getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, supplier.getName());
+            ps.setInt(2, supplier.getId());
+            
+            ps.executeUpdate();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+            AlertMaker.showErrorAlert(ex.getMessage());
+        }
+    }
+    
 }

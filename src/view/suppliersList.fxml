@@ -10,16 +10,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="658.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersListController">
+<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="641.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SuppliersListController">
     <stylesheets>
         <URL value="@/resources/style.css" />
     </stylesheets>
-   <children>
+     <children>
       <VBox layoutX="465.0" layoutY="51.0" prefHeight="546.0" prefWidth="976.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                   <com.jfoenix.controls.JFXButton onAction="#editCustomerName" prefHeight="61.0" prefWidth="100.0" styleClass="normalButton" text="تعديل">
+                   <com.jfoenix.controls.JFXButton onAction="#editSupplierName" prefHeight="61.0" prefWidth="100.0" styleClass="normalButton" text="تعديل">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -28,7 +28,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </com.jfoenix.controls.JFXButton>
-                  <TextField fx:id="txtCustomerName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="473.0" promptText="ادخل اسم العميل">
+                  <TextField fx:id="txtSupplierName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="473.0" promptText="ادخل اسم العميل">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -40,10 +40,10 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="337.0" prefWidth="976.0">
                <children>
-                  <TableView fx:id="tbCustomers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="581.0">
+                  <TableView fx:id="tbSuppliers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="581.0">
                     <columns>
-                      <TableColumn fx:id="colCustomerID" prefWidth="100" text="رقم العميل" />
-                      <TableColumn fx:id="colCustomerName" prefWidth="300" text="اسم العميل" />
+                      <TableColumn fx:id="colSupplierID" prefWidth="100" text="رقم المورد" />
+                      <TableColumn fx:id="colSupplierName" prefWidth="300" text="اسم المورد" />
                     </columns>
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
