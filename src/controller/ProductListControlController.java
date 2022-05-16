@@ -98,22 +98,22 @@ public class ProductListControlController implements Initializable {
     * 
     */
     
-    @FXML
-    void deleteAllProducts(ActionEvent event)
-    {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("هل تريد حذف جميع الاصناف ؟");
-        alert.setHeaderText("تأكيد");
-        Optional<ButtonType> response = alert.showAndWait();
-        
-        if(response.get().equals( ButtonType.OK))
-        {
-            DatabaseHandler.deleteAllProducts();
-            productsList.clear();
-            productsList = DatabaseHandler.getProductsListWithDollarValue();
-            setProductTableItems();
-        }
-    }
+//    @FXML
+//    void deleteAllProducts(ActionEvent event)
+//    {
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//        alert.setContentText("هل تريد حذف جميع الاصناف ؟");
+//        alert.setHeaderText("تأكيد");
+//        Optional<ButtonType> response = alert.showAndWait();
+//        
+//        if(response.get().equals( ButtonType.OK))
+//        {
+//            DatabaseHandler.deleteAllProducts();
+//            productsList.clear();
+//            productsList = DatabaseHandler.getProductsListWithDollarValue();
+//            setProductTableItems();
+//        }
+//    }
     
     /**
      * this method is used to edit the selected product at the table view

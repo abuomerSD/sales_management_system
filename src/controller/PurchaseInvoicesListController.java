@@ -6,7 +6,9 @@
 package controller;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -25,7 +27,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Product;
 import model.PurchaseInvoiceDetails;
 import model.PurchaseInvoiceHeader;
+import resources.AlertMaker;
 import resources.DatabaseHandler;
+import resources.ReportViewer;
 
 /**
  * FXML Controller class
@@ -96,13 +100,33 @@ public class PurchaseInvoicesListController implements Initializable {
     }
 
     @FXML
-    void editSalesInvoice(ActionEvent event) {
+    void editPurchaseInvoice(ActionEvent event) {
 
     }
 
     @FXML
     void printPurchaseInvoice(ActionEvent event) {
-
+        if (tbPurchaseInvoicesList.getSelectionModel().getSelectedItem() == null) {
+            AlertMaker.showErrorAlert("من فضلك اختر فاتورة اولا");
+            return;
+        }
+        PurchaseInvoiceHeader purchaseInvoiceHeader = tbPurchaseInvoicesList.getSelectionModel().getSelectedItem();
+        
+        
+        ReportViewer reportViewer = new ReportViewer();
+        String reportName = "puchaseInvoice.jrxml";
+        
+        Map paramters = new HashMap();
+        
+        paramters.put("invoiceNumber", purchaseInvoiceHeader.getId());
+        paramters.put("supplierName", purchaseInvoiceHeader.getSupplierName());
+        paramters.put("date", purchaseInvoiceHeader.getDate());
+        paramters.put("total", purchaseInvoiceHeader.getPurchaeInvoiceTotalCost());
+        
+        
+        List<PurchaseInvoiceDetails> list = DatabaseHandler.getPurchaseInvoicesDetails(purchaseInvoiceHeader.getId());
+        
+        reportViewer.showReport(reportName, paramters, list);
     }
 
     @FXML

@@ -794,7 +794,17 @@ public class DatabaseHandler {
             
             System.out.println("current product Cost = " +purchaseInvoiceDetails.getProductCost());
             
-            double newCost = (oldCostSum + newCostSum) / (oldProductQTY + newProductQtyFromPurchaseInvoice) ;  
+            double newCost = (oldCostSum + newCostSum) / (oldProductQTY + newProductQtyFromPurchaseInvoice) ;
+            
+            // fixing Zero Qty Products cost bug
+            
+            Product product = new Product();
+            product.setProductName(purchaseInvoiceDetails.getProductName());
+            product.setProductCode(purchaseInvoiceDetails.getProductCode());
+            
+            if(isProductQtyZero(product))
+                newCost = purchaseInvoiceDetails.getProductCost();
+                
             System.out.println("newCost = "+ newCost);
             
             DecimalFormat decimalFormat = new DecimalFormat("#.00");
@@ -1297,5 +1307,37 @@ public class DatabaseHandler {
             AlertMaker.showErrorAlert(ex.getMessage());
         }
     }
+     
+     public static boolean isProductQtyZero(Product product)
+     {
+         boolean check = false;
+         
+         String sql = "SELECT productQuantity FROM tbProduct Where productName = '" + product.getProductName() + "';";
+         
+         try
+         {
+            con = getConnection();
+             System.out.println(sql);
+            ResultSet rs = execQuery(sql);
+            
+            while(rs.next())
+            {
+                double qty = rs.getDouble("productQuantity");
+                if(qty != 0)
+                {
+                    check = true;
+                }
+            }
+         }
+         
+         catch(Exception ex)
+         {
+             ex.printStackTrace();
+             AlertMaker.showErrorAlert(ex.getMessage());
+         }
+         
+         
+         return check;
+     }
     
 }

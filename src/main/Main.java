@@ -22,8 +22,7 @@ public class Main extends Application{
         
         StageShower stageShower = new StageShower();
         stageShower.show(stageURL, "الواجهة الرئيسية", true);
-        DatabaseHandler.createTables();
-        
+        DatabaseHandler.createTables();  
     }
     
     

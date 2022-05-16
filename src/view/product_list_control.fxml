@@ -41,7 +41,6 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="132.0" prefWidth="1088.0">
                <children>
-                  <JFXButton onAction="#deleteAllProducts" prefHeight="54.0" prefWidth="160.0" styleClass="cancelButton" text="حذف جميع الاصناف" />
                   <JFXButton fx:id="btnDelete" layoutX="482.0" layoutY="48.0" onAction="#printAllProducts" prefHeight="56.0" prefWidth="144.0" styleClass="option3" text="طباعة" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
