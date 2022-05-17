@@ -18,13 +18,17 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import model.InvoiceDetails;
 import model.InvoiceHeader;
 import resources.DatabaseHandler;
@@ -102,7 +106,27 @@ public class SalesInvoicesListController implements Initializable {
 
     @FXML
     void editSalesInvoice(ActionEvent event) {
-
+//        StageShower stageShower = new StageShower();
+//        stageShower.show("editSalesInvoice.fxml", "تعديل فاتورة مبيعات", true);
+        
+        try
+        {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/editSalesInvoice.fxml"));
+            Parent parent = loader.load();
+            EditSalesInvoiceController controller = (EditSalesInvoiceController) loader.getController();
+            
+            InvoiceHeader header = tbSalesInvoicesList.getSelectionModel().getSelectedItem();
+            controller.getOldInvoiceData(header);
+            controller.enableControls();
+            Stage stage = new Stage();
+            stage.setTitle("تعديل فاتورة مبيعات");
+            stage.setScene(new Scene(parent));
+            stage.show();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

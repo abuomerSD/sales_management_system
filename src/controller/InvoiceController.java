@@ -41,12 +41,6 @@ import model.Customer;
 import model.InvoiceDetails;
 import model.Product;
 import model.ProductMovement;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.view.JasperViewer;
 import resources.ReportViewer;
 import resources.StageShower;
 
@@ -76,94 +70,94 @@ public class InvoiceController implements Initializable {
    }    
     
     @FXML
-    private JFXButton btnGetProductData;
+    public JFXButton btnGetProductData;
     
     @FXML
-    private JFXButton btnAddProductToInvoice;
+    public JFXButton btnAddProductToInvoice;
     
     @FXML
-    private JFXButton btnSaveInvoice;
+    public JFXButton btnSaveInvoice;
     
     @FXML
-    private JFXButton btnPrintInvoice;
+    public JFXButton btnPrintInvoice;
     
     @FXML
-    private JFXButton btnNewInvoice;
+    public JFXButton btnNewInvoice;
     
     
      @FXML
-    private ChoiceBox<?> choiceBoxCustomerName;
+    public ChoiceBox<String> choiceBoxCustomerName;
      
     @FXML
-    private TableView<InvoiceDetails> tbInvoice;
+    public TableView<InvoiceDetails> tbInvoice;
 
     @FXML
-    private TableColumn<InvoiceDetails, Double> colInvoiceProductPrice;
+    public TableColumn<InvoiceDetails, Double> colInvoiceProductPrice;
 
     @FXML
-    private TextField txtDiscount;
+    public TextField txtDiscount;
 
     @FXML
-    private DatePicker txtDate;
+    public DatePicker txtDate;
 
     @FXML
-    private TextField txtProductQuantity;
+    public TextField txtProductQuantity;
 
     @FXML
-    private TextField txtInvoiceTotal;
+    public TextField txtInvoiceTotal;
 
     @FXML
-    private TextField txtProductName;
+    public TextField txtProductName;
     
     @FXML
-    private TableView<Product> tbSearchProduct;
+    public TableView<Product> tbSearchProduct;
 
     @FXML
-    private TableColumn<Product, String> colSearchProductName;
+    public TableColumn<Product, String> colSearchProductName;
     
     @FXML
-    private TableColumn<Product, Double> colSearchProductPrice;
+    public TableColumn<Product, Double> colSearchProductPrice;
 
     @FXML
-    private TableColumn<InvoiceDetails, String> colInvoiceProductName;
+    public TableColumn<InvoiceDetails, String> colInvoiceProductName;
 
     @FXML
-    private TableColumn<InvoiceDetails, Double> colInvoiceProductQTY;
+    public TableColumn<InvoiceDetails, Double> colInvoiceProductQTY;
 
     @FXML
-    private TextField txtTax;
+    public TextField txtTax;
 
     @FXML
-    private TextField txtInvoiceNumber;
+    public TextField txtInvoiceNumber;
 
     @FXML
-    private TableColumn<Product, Double> colSearchProductQTY;
+    public TableColumn<Product, Double> colSearchProductQTY;
 
     @FXML
-    private TextField txtProductPrice;
+    public TextField txtProductPrice;
 
     @FXML
-    private TableColumn<InvoiceDetails, Double> colInvoiceProductTotal;
+    public TableColumn<InvoiceDetails, Double> colInvoiceProductTotal;
     
     @FXML
-    private Label lbdiscount;
+    public Label lbdiscount;
     
     @FXML
-    private Label lbtax;
+    public Label lbtax;
     
     @FXML
-    private TableColumn<InvoiceDetails, Integer> colInvoiceColumnNumber;
+    public TableColumn<InvoiceDetails, Integer> colInvoiceColumnNumber;
     
     @FXML
-    ChoiceBox<?> choiceBoxSalesInvoiceType;
+    ChoiceBox<String> choiceBoxSalesInvoiceType;
     
-    ObservableList invoiceDetailsList = FXCollections.observableArrayList();
+    ObservableList<InvoiceDetails> invoiceDetailsList = FXCollections.observableArrayList();
     
     // creating a Product Object for the  search feature
-    private Product product;
+    public Product product;
 
     @FXML
-    void addProductToTableView(ActionEvent event) {
+    public void addProductToTableView(ActionEvent event) {
         
         try{
             
@@ -235,7 +229,7 @@ public class InvoiceController implements Initializable {
     }
 
     @FXML
-    void saveInvoice(ActionEvent event) throws SQLException {
+    public void saveInvoice(ActionEvent event) throws SQLException {
         
         if(invoiceDetailsList.isEmpty()){
             AlertMaker.showErrorAlert("اختر بعض الاصناف");
@@ -275,7 +269,7 @@ public class InvoiceController implements Initializable {
     }
 
     @FXML
-    void printInvoice(ActionEvent event) {
+    public void printInvoice(ActionEvent event) {
         
         String reportURL = "D:\\Step Sales\\Reports\\sales_invoice.jrxml";
         
@@ -318,7 +312,7 @@ public class InvoiceController implements Initializable {
     }
 
     @FXML
-    void newInvoice(ActionEvent event) {
+    public void newInvoice(ActionEvent event) {
 //        enableControls();
 //        resetAllTotalTextFields();
 //        setInvoiceNumber();
@@ -336,7 +330,7 @@ public class InvoiceController implements Initializable {
     }
 
     @FXML
-    void getProductDetails(ActionEvent event) {
+    public void getProductDetails(ActionEvent event) {
         try{
             product = tbSearchProduct.getSelectionModel().getSelectedItem();
                       
@@ -360,7 +354,7 @@ public class InvoiceController implements Initializable {
     
     
     @FXML
-    void addTax(){
+    public void addTax(){
         DecimalFormat decimalFormat = new DecimalFormat("#.0000");
         Double tax = Double.valueOf(decimalFormat.format(Double.valueOf(txtTax.getText())));
         double oldInvoiceTolal = Double.valueOf(txtInvoiceTotal.getText());
@@ -373,7 +367,7 @@ public class InvoiceController implements Initializable {
     }
     
     @FXML
-    void addDiscount(){
+    public void addDiscount(){
         DecimalFormat decimalFormat = new DecimalFormat("#.0000");
         double oldInvoiceTolal = Double.valueOf(decimalFormat.format(Double.valueOf(txtInvoiceTotal.getText())));
         Double discount = Double.valueOf(decimalFormat.format(Double.valueOf(txtDiscount.getText())));
@@ -387,7 +381,7 @@ public class InvoiceController implements Initializable {
     
     
     @FXML
-    private void deleteProductFromInvoiceTable(){
+    public void deleteProductFromInvoiceTable(){
         InvoiceDetails invoiceDetails = tbInvoice.getSelectionModel().getSelectedItem();
         invoiceDetailsList.remove(invoiceDetails);
         double oldInvoiceTotal = Double.valueOf(txtInvoiceTotal.getText());
@@ -395,7 +389,7 @@ public class InvoiceController implements Initializable {
         txtInvoiceTotal.setText(newInvoiceTotal.toString());
     }
 
-    private void setInvoiceNumber() {
+    public void setInvoiceNumber() {
         Integer lastInvoiceNumber = 0;
         try {
             // TODO
@@ -410,7 +404,7 @@ public class InvoiceController implements Initializable {
     }
     
     
-    private void setInvoiceDate(){
+    public void setInvoiceDate(){
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println( simpleDateFormat.format(date) );
@@ -420,7 +414,7 @@ public class InvoiceController implements Initializable {
         txtDate.setValue(localDate);
     }
     
-    private void setCustomersList(){
+    public void setCustomersList(){
         ObservableList customersObjects = DatabaseHandler.getCusmtomerList();
         ObservableList customersNames = FXCollections.observableArrayList();
         
@@ -434,7 +428,7 @@ public class InvoiceController implements Initializable {
         choiceBoxCustomerName.setItems(customersNames);
     }
 
-    private void setSearchTableItems() {
+    public void setSearchTableItems() {
         colSearchProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
         colSearchProductQTY.setCellValueFactory(new PropertyValueFactory<Product, Double>("productQuantity"));
         colSearchProductPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("productPrice"));
@@ -443,7 +437,7 @@ public class InvoiceController implements Initializable {
     }
     
     
-    private void filterSearchTable(){
+    public void filterSearchTable(){
         ObservableList productsList = DatabaseHandler.getProductsList();
         FilteredList<Product> filteredData = new FilteredList<>(productsList, b -> true);
         txtProductName.textProperty().addListener((observable, oldValue, newValue)->{
@@ -466,7 +460,7 @@ public class InvoiceController implements Initializable {
     }
     
     
-    private void enableControls(){
+    public void enableControls(){
         txtDate.setDisable(false);
         txtInvoiceNumber.setDisable(false);
         //choiceBoxCustomerName.setDisable(false);
@@ -486,7 +480,7 @@ public class InvoiceController implements Initializable {
     }
 
 
-    private void disableControls(){
+    public void disableControls(){
         txtDate.setDisable(true);
         txtInvoiceNumber.setDisable(true);
         //choiceBoxCustomerName.setDisable(true);
@@ -505,21 +499,21 @@ public class InvoiceController implements Initializable {
         
     }
 
-    private void resetAllTotalTextFields() {
+    public void resetAllTotalTextFields() {
         txtInvoiceTotal.setText("0");
         txtTax.setText("0");
         txtDiscount.setText("0");
     }
     
     @FXML
-    private void cancelGetProductData(){
+    public void cancelGetProductData(){
         txtProductName.setDisable(false);
         txtProductName.clear();
         txtProductPrice.clear();
         txtProductQuantity.clear();
     }
 
-    private void addSalesInvoiceTypes() {
+    public void addSalesInvoiceTypes() {
         
         ObservableList payType = FXCollections.observableArrayList();
         payType.add("كاش");
@@ -531,7 +525,7 @@ public class InvoiceController implements Initializable {
     
     
     
-    private void addCustomerChoiceBoxListener(){
+    public void addCustomerChoiceBoxListener(){
         choiceBoxCustomerName.getSelectionModel().selectedIndexProperty().addListener(
               (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
                             choiceBoxSalesInvoiceType.setDisable(false);
@@ -540,7 +534,7 @@ public class InvoiceController implements Initializable {
     }
     
     
-    private void addPayTypeChoiceBoxListener(){
+    public void addPayTypeChoiceBoxListener(){
         choiceBoxSalesInvoiceType.getSelectionModel().selectedIndexProperty().addListener(
               (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
                             enableControls();
@@ -548,16 +542,16 @@ public class InvoiceController implements Initializable {
                             });
     }
     
-    private void dicreaseProductsQtyFromDataBase(){
+    public void dicreaseProductsQtyFromDataBase(){
         DatabaseHandler.dicreaseProductsQtyFromDataBase(invoiceDetailsList);
     }
     
-    private void setDiscountAndTaxLabels(){
+    public void setDiscountAndTaxLabels(){
         lbtax.setText("0.0");
         lbdiscount.setText("0.0");
     }
 
-    private void addProductMovement() {
+    public void addProductMovement() {
         try
         {
             ProductMovement productMovement = new ProductMovement();
@@ -593,7 +587,7 @@ public class InvoiceController implements Initializable {
         }
     }
     
-    private void addSalesInvoiceTotalCost()
+    public void addSalesInvoiceTotalCost()
     {
         
     }

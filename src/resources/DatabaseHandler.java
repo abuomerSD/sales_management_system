@@ -1339,5 +1339,115 @@ public class DatabaseHandler {
          
          return check;
      }
+     
+     public static void editSalesInvoice(InvoiceHeader header, List<InvoiceDetails> newProductList)
+     {
+         List<InvoiceDetails> oldProductList = new ArrayList();
+         
+         
+         String getOldInvoiceProductsSQL = "SELECT * FROM tbInvoiceDetails WHERE invoiceNumber = "+ header.getNumber();
+         con = getConnection();
+         ResultSet resultSet = execQuery(getOldInvoiceProductsSQL);
+         
+         try
+         {
+             while(resultSet.next())
+                {
+                    InvoiceDetails invoiceDetails = new InvoiceDetails();
+                    invoiceDetails.setColNumber(resultSet.getInt("colNumber"));
+                    invoiceDetails.setInvoiceNumber(resultSet.getInt("invoiceNumber"));
+                    invoiceDetails.setProductName(resultSet.getString("productName"));
+                    invoiceDetails.setProductPrice(resultSet.getDouble("price"));
+                    invoiceDetails.setProductQuantity(resultSet.getDouble("quantity"));
+                    invoiceDetails.setProductTotalSale(resultSet.getDouble("productTotalSale"));
+                    
+                    oldProductList.add(invoiceDetails);
+                }
+         }
+         catch(SQLException ex)
+         {
+             ex.printStackTrace();
+         }
+         
+         for(int i = 0; i<oldProductList.size(); i++)
+         {
+             // adding adjustment after invoice edited
+             InvoiceDetails invoiceDetails = oldProductList.get(i);
+             
+             InventoryAdjustment adjustment = new InventoryAdjustment();
+             
+             adjustment.setAdjustmentQTY(invoiceDetails.getProductQuantity());
+             adjustment.setDate(header.getDate());
+             adjustment.setDetails("إرجاع قيم الفاتورة رقم  "+ header.getNumber() + " للمخزن");
+             adjustment.setId(header.getNumber());
+             adjustment.setProductCode(getProductCode(invoiceDetails.getProductName()));
+             adjustment.setProductName(invoiceDetails.getProductName());
+             adjustment.setProductQtyAfterAdjustment(getProductQTY(invoiceDetails.getProductName() + invoiceDetails.getProductQuantity()));
+             
+             addInventoryAdjustment(adjustment);
+         }
+         
+
+
+         for (int i = 0; i< newProductList.size() ; i++)
+         {
+             InvoiceDetails invoiceDetails = newProductList.get(i);
+             String invoiceDetailsSQL = "INSERT INTO tbInvoiceDetails VALUES ("
+                                                                + header.getNumber() + ",'"
+                                                                + header.getDate() + "',"
+                                                                + invoiceDetails.getColNumber() +","
+                                                                + header.getCumstomerID() + ",'"
+                                                                + invoiceDetails.getProductName() + "',"
+                                                                + invoiceDetails.getProductPrice() + ","
+                                                                + invoiceDetails.getProductQuantity() +","
+                                                                + invoiceDetails.getProductTotalSale()+ ");";
+                System.out.println(invoiceDetailsSQL);
+                execUpdate(invoiceDetailsSQL);         
+                
+//                Product product = new Product();
+//                product.setProductCode(getProductCode(invoiceDetails.getProductName()));
+//                product.setProductCost(invoiceDetails.get);
+                
+                ProductMovement productMovement = new ProductMovement();
+                productMovement.setCurrentQuantity(getProductQTY(invoiceDetails.getProductName()));
+                productMovement.setDate(header.getDate());
+                productMovement.setDetails("تعديل الفاتورة رقم "+ header.getNumber());
+                productMovement.setInQuantity(0);
+                productMovement.setOutQuantity(invoiceDetails.getProductQuantity());
+                productMovement.setProdcutName(invoiceDetails.getProductName());
+                productMovement.setProductCode(getProductCode(invoiceDetails.getProductName()));
+                productMovement.setPurchaseInvoiceID(0);
+                productMovement.setSalesInvoiceID(header.getNumber());
+                
+                addProductMovement(productMovement);
+                
+                double productOldQTY = getProductQTY(invoiceDetails.getProductName());
+                double productNewQTY = productOldQTY - invoiceDetails.getProductQuantity();
+                
+                String updateProductTableQty = "UPDATE tbProduct SET productQuantity = "
+                        +  productNewQTY + " WHERE productName = '" +invoiceDetails.getProductName()+"' ;";
+                
+                execUpdate(updateProductTableQty);
+                
+                
+                
+         }
+         
+         
+         
+         String deleteItemSql = "DELETE FROM tbInvoiceDetails WHERE invoiceNumber = "+ header.getNumber();
+         execQuery(deleteItemSql);
+         
+         String headerSQL = "UPDATE tbInvoiceHeader SET date = ?, "
+                                                    + "customerID = ?,"
+                                                    + "customerName = ?, "
+                                                    + "payType = ?,"
+                                                    + "tax = ?,"
+                                                    + "discount = ?,"
+                                                    + "invoiceTotal = ?,"
+                                                    + "invoiceTotalCost = ? ;";
+         System.out.println(headerSQL);
+         execUpdate(headerSQL);
+     }
     
 }
