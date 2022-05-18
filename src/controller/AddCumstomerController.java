@@ -22,6 +22,8 @@ import resources.DatabaseHandler;
  * @author eltayeb
  */
 public class AddCumstomerController implements Initializable {
+    @FXML
+    private JFXTextField txtCustomerPhone;
 
     /**
      * Initializes the controller class.
@@ -39,6 +41,7 @@ public class AddCumstomerController implements Initializable {
         Customer customer = new Customer();
         customer.setName(txtCusmtomerName.getText());
         customer.setTotalPurchase(0);
+        customer.setPhone(txtCustomerPhone.getText());
         
         if(txtCusmtomerName.getText() == ""){
             

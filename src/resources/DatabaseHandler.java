@@ -210,6 +210,7 @@ public class DatabaseHandler {
                 + "id INTEGER  PRIMARY KEY AUTOINCREMENT,"
                 + "name VARCHAR(200)  NOT NULL,"
                 + "totalPurchase DOUBLE,"
+                + "phone VARCHAR(50),"
                 + "UNIQUE (name));";
         
         con = getConnection();
@@ -273,6 +274,7 @@ public class DatabaseHandler {
         String sql = "CREATE TABLE IF NOT EXISTS 'tbSupplier' ('"
                 + "id'	INTEGER NOT NULL,"
                 + "'supplierName'	VARCHAR(200)  NOT NULL,"
+                + "phone VARCHAR(50),"
                 + "PRIMARY KEY('id' AUTOINCREMENT),"
                 + "UNIQUE(supplierName));";
         con = getConnection();
@@ -317,9 +319,10 @@ public class DatabaseHandler {
     
     public static boolean addCustomer(Customer customer){
         boolean status = false;
-        String sql = "INSERT INTO tbCustomer (name, totalPurchase) VALUES ("
+        String sql = "INSERT INTO tbCustomer (name, totalPurchase,phone) VALUES ("
                 + "'" + customer.getName() + "',"
-                + customer.getTotalPurchase()+");";
+                + customer.getTotalPurchase() + ",'"
+                + customer.getPhone() +"');";
         System.out.println(sql);
         con = getConnection();
         if(execUpdate(sql)){
@@ -358,6 +361,7 @@ public class DatabaseHandler {
                 customer.setId(rs.getString("id"));
                 customer.setName(rs.getString("name"));
                 customer.setTotalPurchase(rs.getDouble("totalPurchase"));
+                customer.setPhone(rs.getString("phone"));
                 
                 System.out.println(customer.getName());
                 customerArrayList.add(customer);
@@ -1272,13 +1276,14 @@ public class DatabaseHandler {
     
     public static void updateCustomerName(Customer customer)
     {
-        String sql = "UPDATE tbCustomer SET name = ? WHERE id = ?;";
+        String sql = "UPDATE tbCustomer SET name = ?,phone = ? WHERE id = ?;";
         try
         {
             con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, customer.getName());
-            ps.setString(2, customer.getId());
+            ps.setString(2, customer.getPhone());
+            ps.setString(3, customer.getId());
             
             ps.executeUpdate();
         }

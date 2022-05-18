@@ -6,17 +6,12 @@
 package controller;
 
 import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,6 +36,10 @@ public class CustomersListController implements Initializable {
     ObservableList<Customer> customersList ;
     @FXML
     private TextField txtCustomerName;
+    @FXML
+    private TableColumn<Customer, String> colCustomerPhone;
+    @FXML
+    private TextField txtCustomerPhone;
 
     /**
      * Initializes the controller class.
@@ -54,6 +53,7 @@ public class CustomersListController implements Initializable {
 
         colCustomerID.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("id"));
         colCustomerName.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
+        colCustomerPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("phone"));
         
         customersList = DatabaseHandler.getCusmtomerList();
         tbCustomers.setItems(customersList);
@@ -66,6 +66,7 @@ public class CustomersListController implements Initializable {
         String customerName = txtCustomerName.getText();
         Customer customer = tbCustomers.getSelectionModel().getSelectedItem();
         customer.setName(customerName);
+        customer.setPhone(txtCustomerPhone.getText());
         try {
             
             if(! txtCustomerName.getText().isEmpty())

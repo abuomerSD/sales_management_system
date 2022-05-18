@@ -13,6 +13,7 @@ public class Customer {
     private String id;
     private String name;
     private double totalPurchase;
+    private String phone;
 
     public Customer(String id, String name, double totalPurchase) {
         this.id = id;
@@ -23,6 +24,16 @@ public class Customer {
     public Customer() {
         
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    
 
     public String getId() {
         return id;

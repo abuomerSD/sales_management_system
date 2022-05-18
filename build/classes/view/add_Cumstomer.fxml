@@ -25,6 +25,14 @@
                   <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                </VBox.margin>
             </JFXTextField>
+            <JFXTextField fx:id="txtCustomerPhone" labelFloat="true" layoutX="20.0" layoutY="30.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#addCustomer" promptText="رقم هاتف العميل">
+               <font>
+                  <Font name="Calibri" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+            </JFXTextField>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <JFXButton onAction="#addCustomer" prefHeight="78.0" prefWidth="215.0" styleClass="normalButton" text="إضافة العميل">

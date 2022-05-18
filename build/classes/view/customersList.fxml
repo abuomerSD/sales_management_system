@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="658.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersListController">
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="764.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersListController">
     <stylesheets>
         <URL value="@/resources/style.css" />
     </stylesheets>
@@ -28,7 +28,15 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </com.jfoenix.controls.JFXButton>
-                  <TextField fx:id="txtCustomerName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="473.0" promptText="ادخل اسم العميل">
+                  <TextField fx:id="txtCustomerPhone" layoutX="153.0" layoutY="38.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="255.0" promptText="ادخل رقم هاتف العميل">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtCustomerName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="286.0" promptText="ادخل اسم العميل">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -43,7 +51,8 @@
                   <TableView fx:id="tbCustomers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="581.0">
                     <columns>
                       <TableColumn fx:id="colCustomerID" prefWidth="100" text="رقم العميل" />
-                      <TableColumn fx:id="colCustomerName" prefWidth="300" text="اسم العميل" />
+                      <TableColumn fx:id="colCustomerName" prefWidth="280.0" text="اسم العميل" />
+                        <TableColumn fx:id="colCustomerPhone" prefWidth="200.0" text="رقم هاتف العميل" />
                     </columns>
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />
