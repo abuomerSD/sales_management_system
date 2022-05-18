@@ -13,6 +13,7 @@ public class Supplier {
     
     private int id;
     private String name;
+    private String phone;
 
     public Supplier() {
     }
@@ -21,6 +22,16 @@ public class Supplier {
         this.id = id;
         this.name = name;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    
 
     public int getId() {
         return id;

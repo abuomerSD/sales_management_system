@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import model.Supplier;
 import resources.AlertMaker;
 import resources.DatabaseHandler;
 
@@ -19,6 +20,8 @@ import resources.DatabaseHandler;
  * @author eltayeb
  */
 public class AddSupplierController implements Initializable {
+    @FXML
+    private JFXTextField txtSupplierPhone;
 
     /**
      * Initializes the controller class.
@@ -34,18 +37,25 @@ public class AddSupplierController implements Initializable {
     @FXML
     private void addSupplier(){
         String supplierName = "";
+        String supplierPhone = "";
+        
         try{
           supplierName = txtSuppliername.getText();
-          if(!supplierName.equals(""))
+          supplierPhone = txtSupplierPhone.getText();
+          if(!supplierName.equals("") && !supplierPhone.equals(""))
           {
-            DatabaseHandler.addSupplier(supplierName);  
+            Supplier supplier = new Supplier();
+            supplier.setName(supplierName);
+            supplier.setPhone(supplierPhone);
+            DatabaseHandler.addSupplier(supplier);  
             AlertMaker.showInformationAlert("تم اضافة " + supplierName + " بنجاح");
             txtSuppliername.clear();
             txtSuppliername.requestFocus();
+            txtSupplierPhone.clear();
           }
           else
           {
-              AlertMaker.showErrorAlert("ادخل اسم المورد اولا");
+              AlertMaker.showErrorAlert("ادخل اسم المورد و رقم الهاتف اولا");
           }
           
         } catch(Exception ex){

@@ -35,6 +35,10 @@ public class SuppliersListController implements Initializable {
     private TableColumn<Supplier, String> colSupplierName;
     
     ObservableList<Supplier> suppliersList ;
+    @FXML
+    private TextField txtSupplierPhone;
+    @FXML
+    private TableColumn<Supplier, String> colSupplierPhone;
 
     /**
      * Initializes the controller class.
@@ -47,9 +51,10 @@ public class SuppliersListController implements Initializable {
     @FXML
     private void editSupplierName(ActionEvent event) {
         
-        if (! txtSupplierName.getText().isEmpty()){
+        if (! txtSupplierName.getText().isEmpty() && ! txtSupplierPhone.getText().isEmpty()){
             Supplier supplier = tbSuppliers.getSelectionModel().getSelectedItem();
             supplier.setName(txtSupplierName.getText());
+            supplier.setPhone(txtSupplierPhone.getText());
             
             try
             {
@@ -66,13 +71,14 @@ public class SuppliersListController implements Initializable {
         }
         else 
         {
-            AlertMaker.showErrorAlert("ادخل الاسم اولا");
+            AlertMaker.showErrorAlert("ادخل اسم المورد و رقم الهاتف اولا");
         }
     }
 
     private void fillTable() {
         colSupplierID.setCellValueFactory(new PropertyValueFactory<Supplier, Integer>("id"));
         colSupplierName.setCellValueFactory(new PropertyValueFactory<Supplier, String>("name"));
+        colSupplierPhone.setCellValueFactory(new PropertyValueFactory<Supplier, String>("phone"));
         
         suppliersList = DatabaseHandler.getSuppliersList();
         tbSuppliers.setItems(suppliersList);

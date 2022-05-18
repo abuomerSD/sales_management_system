@@ -17,7 +17,15 @@
    <children>
       <VBox alignment="CENTER" layoutX="72.0" layoutY="14.0" prefHeight="246.0" prefWidth="555.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXTextField fx:id="txtSuppliername" alignment="CENTER_RIGHT" labelFloat="true" onAction="#addSupplier" prefHeight="38.0" prefWidth="474.0" promptText="ادخل اسم المورد">
+            <JFXTextField fx:id="txtSuppliername" alignment="CENTER_RIGHT" labelFloat="true"  prefHeight="38.0" prefWidth="474.0" promptText="ادخل اسم المورد">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="txtSupplierPhone" alignment="CENTER_RIGHT" labelFloat="true" onAction="#addSupplier" prefHeight="38.0" prefWidth="474.0" promptText="ادخل رقم هاتف المورد" >
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>

@@ -48,7 +48,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="337.0" prefWidth="976.0">
                <children>
-                  <TableView fx:id="tbCustomers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="581.0">
+                  <TableView fx:id="tbCustomers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="663.0">
                     <columns>
                       <TableColumn fx:id="colCustomerID" prefWidth="100" text="رقم العميل" />
                       <TableColumn fx:id="colCustomerName" prefWidth="280.0" text="اسم العميل" />

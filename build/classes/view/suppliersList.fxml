@@ -28,7 +28,15 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </com.jfoenix.controls.JFXButton>
-                  <TextField fx:id="txtSupplierName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="473.0" promptText="ادخل اسم العميل">
+                  <TextField fx:id="txtSupplierPhone" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="179.0" promptText="ادخل رقم هاتف المورد">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="txtSupplierName" nodeOrientation="RIGHT_TO_LEFT" prefHeight="44.0" prefWidth="300" promptText="ادخل اسم المورد">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -40,10 +48,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="337.0" prefWidth="976.0">
                <children>
-                  <TableView fx:id="tbSuppliers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="581.0">
+                  <TableView fx:id="tbSuppliers" nodeOrientation="RIGHT_TO_LEFT" prefHeight="337.0" prefWidth="700">
                     <columns>
                       <TableColumn fx:id="colSupplierID" prefWidth="100" text="رقم المورد" />
-                      <TableColumn fx:id="colSupplierName" prefWidth="300" text="اسم المورد" />
+                      <TableColumn fx:id="colSupplierName" prefWidth="350" text="اسم المورد" />
+                      <TableColumn fx:id="colSupplierPhone" prefWidth="200" text="رقم هاتف المورد" />
                     </columns>
                      <HBox.margin>
                         <Insets left="20.0" right="20.0" />

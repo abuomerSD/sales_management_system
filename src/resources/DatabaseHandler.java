@@ -715,7 +715,7 @@ public class DatabaseHandler {
                 Supplier supplier = new Supplier();
                 supplier.setId(rs.getInt("id"));
                 supplier.setName(rs.getString("supplierName"));
-                
+                supplier.setPhone(rs.getString("phone"));
                 
                 System.out.println(supplier.getName());
                 supplierArrayList.add(supplier);
@@ -991,9 +991,12 @@ public class DatabaseHandler {
         execUpdate(sql);
     }
     
-    public static void addSupplier(String supplierName)
+    public static void addSupplier(Supplier supplier)
     {
-        String sql = "INSERT INTO tbSupplier (supplierName) VALUES ('" + supplierName + "');";
+        String sql = "INSERT INTO tbSupplier (supplierName,phone) VALUES ('" 
+                + supplier.getName() +"','"
+                + supplier.getPhone()
+                + "');";
         
         con = getConnection();
         execUpdate(sql);
@@ -1296,13 +1299,14 @@ public class DatabaseHandler {
     
      public static void updateSupplierName(Supplier supplier)
     {
-        String sql = "UPDATE tbSupplier SET supplierName = ? WHERE id = ? ;";
+        String sql = "UPDATE tbSupplier SET supplierName = ?,phone = ? WHERE id = ? ;";
         try
         {
             con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, supplier.getName());
-            ps.setInt(2, supplier.getId());
+            ps.setString(2, supplier.getPhone());
+            ps.setInt(3, supplier.getId());
             
             ps.executeUpdate();
         }
