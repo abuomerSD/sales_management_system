@@ -50,7 +50,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
-                        <Label fx:id="lbSalesInvoiceCount" text="عدد الاصناف" textFill="WHITE">
+                        <Label fx:id="lbProductsCount" text="عدد الاصناف" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>

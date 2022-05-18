@@ -50,6 +50,11 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
+                        <Label fx:id="lbCustomersCount" text="عدد فواتير المشتروات" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -70,11 +75,6 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
-                        <Label fx:id="lbCustomersCount" text="عدد العملاء" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" top="20.0" />

@@ -1449,5 +1449,110 @@ public class DatabaseHandler {
          System.out.println(headerSQL);
          execUpdate(headerSQL);
      }
-    
+     
+     public static int getCustomersCount()
+     {
+         int count = 0;
+         
+         String sql = "SELECT count(id) from tbCustomer";
+         con = getConnection();
+         ResultSet rs = execQuery(sql);
+         
+        try {
+            while(rs.next())
+            {
+                count = rs.getInt("count(id)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+         
+         return count;
+     }
+     
+     public static int getSalesInvoicesCount()
+     {
+         int count = 0;
+         
+         String sql = "SELECT count(invoiceNumber) from tbInvoiceHeader";
+         con = getConnection();
+         ResultSet rs = execQuery(sql);
+         
+        try {
+            while(rs.next())
+            {
+                count = rs.getInt("count(invoiceNumber)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+         
+         return count;
+     }
+     
+     public static int getProductsCount()
+     {
+         int count = 0;
+         
+         String sql = "SELECT count(productCode) from tbProduct";
+         con = getConnection();
+         ResultSet rs = execQuery(sql);
+         
+        try {
+            while(rs.next())
+            {
+                count = rs.getInt("count(productCode)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+         
+         return count;
+     }
+     
+     public static int getPurchaseInvoicesCount()
+     {
+         int count = 0;
+         
+         String sql = "SELECT count(id) from tbPurchaseInvoiceHeader";
+         con = getConnection();
+         ResultSet rs = execQuery(sql);
+         
+        try {
+            while(rs.next())
+            {
+                count = rs.getInt("count(id)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+         
+         return count;
+     }
+     
+     public static int getSuppliersCount()
+     {
+         int count = 0;
+         
+         String sql = "SELECT count(id) from tbSupplier";
+         con = getConnection();
+         ResultSet rs = execQuery(sql);
+         
+        try {
+            while(rs.next())
+            {
+                count = rs.getInt("count(id)");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+            ex.getMessage();
+        }
+         
+         return count;
+     }    
 }

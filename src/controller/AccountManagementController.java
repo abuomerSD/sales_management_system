@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import resources.DatabaseHandler;
 import resources.StageShower;
 
 /**
@@ -24,10 +25,12 @@ public class AccountManagementController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setCountLabels();
     }    
     
+    @FXML
     private Label lbCustomersCount;
+    @FXML
     private Label lbSuppliersCount;
     
     
@@ -66,5 +69,10 @@ public class AccountManagementController implements Initializable {
     private void showSuppliersAccountStage()
     {
         
+    }
+
+    private void setCountLabels() {
+        lbCustomersCount.setText(String.valueOf(DatabaseHandler.getCustomersCount()));
+        lbSuppliersCount.setText(String.valueOf(DatabaseHandler.getSuppliersCount()));
     }
 }

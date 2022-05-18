@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import resources.DatabaseHandler;
 import resources.StageShower;
 
 /**
@@ -17,13 +19,15 @@ import resources.StageShower;
  * @author eltayeb
  */
 public class PurchaseManagementController implements Initializable {
+    @FXML
+    private Label lbCustomersCount;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setCountLabels();
     }    
     
     
@@ -43,6 +47,10 @@ public class PurchaseManagementController implements Initializable {
     private void showPurchaseInvoiceReportsStage(){
         StageShower stageShower = new StageShower();
         stageShower.show("/view/purchaseReports.fxml", "قائمة فواتير المشتروات", false); 
+    }
+
+    private void setCountLabels() {
+       lbCustomersCount.setText(String.valueOf(DatabaseHandler.getPurchaseInvoicesCount()));
     }
     
     

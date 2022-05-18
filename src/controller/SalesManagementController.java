@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import resources.DatabaseHandler;
 import resources.StageShower;
 
 /**
@@ -24,7 +25,7 @@ public class SalesManagementController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setCountLabels();
     }    
     
     @FXML
@@ -48,6 +49,10 @@ public class SalesManagementController implements Initializable {
         StageShower stageShower = new StageShower();
         stageShower.show("/view/salesReports.fxml", "تقارير المبيعات", false);
         
+    }
+
+    private void setCountLabels() {
+        lbSalesInvoiceCount.setText(String.valueOf(DatabaseHandler.getSalesInvoicesCount()));
     }
     
 }
