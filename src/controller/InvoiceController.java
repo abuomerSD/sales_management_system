@@ -248,11 +248,12 @@ public class InvoiceController implements Initializable {
         
         double totalCost = 0.0;
         double costForEveryProduct;
+        DecimalFormat decimalFormat = new DecimalFormat("#.0000");
         for(int i = 0; i<invoiceDetailsList.size(); i++)
         {
             InvoiceDetails invoiceDetails = (InvoiceDetails) invoiceDetailsList.get(i);
             costForEveryProduct = DatabaseHandler.getProductCost(invoiceDetails.getProductName()) * invoiceDetails.getProductQuantity();
-            totalCost = totalCost + costForEveryProduct;
+            totalCost = Double.valueOf(decimalFormat.format(totalCost + costForEveryProduct));
             
         }
         

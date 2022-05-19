@@ -640,6 +640,19 @@ public class DatabaseHandler {
                             + invoiceDetails.getProductName() + "' ;";
                      System.out.println(updateItemQuantitySQL);
                      execUpdate(updateItemQuantitySQL);
+                     
+                     // adding product Movement
+                     ProductMovement productMovement = new ProductMovement();
+                     productMovement.setCurrentQuantity(newValue);
+                     productMovement.setDate(deleteHeaderSQL);
+                     productMovement.setDetails("حذف فاتورة مبيعات رقم : "+ salesInvoiceID);
+                     productMovement.setInQuantity(invoiceDetails.getProductQuantity());
+                     productMovement.setOutQuantity(0);
+                     productMovement.setProdcutName(invoiceDetails.getProductName());
+                     productMovement.setProductCode(getProductCode(invoiceDetails.getProductName()));
+                     productMovement.setPurchaseInvoiceID(0);
+                     productMovement.setSalesInvoiceID(0);
+                     addProductMovement(productMovement);
                }
                
                

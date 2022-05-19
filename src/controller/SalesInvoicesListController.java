@@ -33,6 +33,7 @@ import model.InvoiceDetails;
 import model.InvoiceHeader;
 import resources.DatabaseHandler;
 import resources.ReportViewer;
+import resources.StageShower;
 
 /**
  * FXML Controller class
@@ -196,6 +197,13 @@ public class SalesInvoicesListController implements Initializable {
     {
         setSalesInvoicesTableData();
         filterSalesInvoiceListTable();
+    }
+    
+    @FXML
+    private void showNewSalesInvoiceStage()
+    {
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/invoice.fxml", "فاتورة مبيعات", true);
     }
     
 }
