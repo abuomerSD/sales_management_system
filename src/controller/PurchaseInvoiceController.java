@@ -224,7 +224,7 @@ public class PurchaseInvoiceController implements Initializable {
         addProductMovement();
         //productsList.clear();
         disableControls();
-        
+        btnSaveInvoice.setDisable(true);
         
 
     }

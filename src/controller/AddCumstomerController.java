@@ -51,6 +51,8 @@ public class AddCumstomerController implements Initializable {
             DatabaseHandler.addCustomer(customer);
             AlertMaker.showInformationAlert(customer.getName()+" Added");
             txtCusmtomerName.clear();
+            txtCustomerPhone.clear();
+            txtCusmtomerName.requestFocus();
         }
 
     }

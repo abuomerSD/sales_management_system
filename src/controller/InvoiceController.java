@@ -262,6 +262,7 @@ public class InvoiceController implements Initializable {
         dicreaseProductsQtyFromDataBase();
         addProductMovement();
         setSearchTableItems();
+        btnSaveInvoice.setDisable(true);
         
         
         }

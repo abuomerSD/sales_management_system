@@ -20,7 +20,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class ReportViewer {
     
-    private final String reportsPath = "E:\\Step Sales\\Reports\\";
+    private final String reportsPath = "C:\\Users\\eltayeb\\Documents\\NetBeansProjects\\Invoice\\src\\reports\\";
     
     
     public void showReport(String reportName, Map parameters, List reportFieldsDataList )
