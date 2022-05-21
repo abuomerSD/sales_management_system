@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -644,7 +645,7 @@ public class DatabaseHandler {
                      // adding product Movement
                      ProductMovement productMovement = new ProductMovement();
                      productMovement.setCurrentQuantity(newValue);
-                     productMovement.setDate(deleteHeaderSQL);
+                     productMovement.setDate(LocalDate.now().toString());
                      productMovement.setDetails("حذف فاتورة مبيعات رقم : "+ salesInvoiceID);
                      productMovement.setInQuantity(invoiceDetails.getProductQuantity());
                      productMovement.setOutQuantity(0);
@@ -1577,4 +1578,67 @@ public class DatabaseHandler {
          
          return count;
      }    
+     
+     public static int getPreviousPurchaseInvoiceId(String ProductName)
+     {
+      int id = 0;
+      
+      String sql = "SELECT max(id) from tbPurchaseInvoiceDetails where productName = '"
+                                                                +ProductName +"';";
+      
+      try
+      {   
+          con = getConnection();
+          ResultSet rs = execQuery(sql);
+          while(rs.next())
+          {
+              id = rs.getInt("max(id)");
+          }
+      }
+      catch(SQLException ex)
+      {
+          ex.printStackTrace();
+      }
+      return id;
+     }
+     
+     public static void updateProductCost(Product product)
+     {
+         String sql = "UPDATE tbProduct SET productCost = ? WHERE productName = ?";
+         con = getConnection();
+         try
+         {
+             PreparedStatement ps = con.prepareStatement(sql);
+             ps.setDouble(1, product.getProductCost());
+             ps.setString(2, product.getProductName());
+             ps.executeUpdate();
+         }
+         catch(SQLException ex)
+         {
+             ex.printStackTrace();
+         }
+     }
+     
+     public static double getPreviousProductCost(int purchaseInvoiceID, String productName)
+     {
+         double cost = 0;
+         String sql = "SELECT * FROM tbPurchaseInvoiceDetails WHERE id = ? AND productName = ?";
+         con = getConnection();
+         try
+         {
+             PreparedStatement ps = con.prepareStatement(sql);
+             ps.setDouble(1, purchaseInvoiceID);
+             ps.setString(2, productName);
+             ResultSet rs = ps.executeQuery();
+             while(rs.next())
+             {
+                 cost = rs.getDouble("productCost");
+             }
+         }
+         catch(SQLException ex)
+         {
+             ex.printStackTrace();
+         }
+         return cost;
+     }
 }

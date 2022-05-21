@@ -6,6 +6,8 @@
 package controller;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +27,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Product;
+import model.ProductMovement;
 import model.PurchaseInvoiceDetails;
 import model.PurchaseInvoiceHeader;
 import resources.AlertMaker;
 import resources.DatabaseHandler;
+import static resources.DatabaseHandler.getProductCode;
 import resources.ReportViewer;
 
 /**
@@ -86,10 +90,36 @@ public class PurchaseInvoicesListController implements Initializable {
             for (PurchaseInvoiceDetails details : purchaseInvoiceDetailsList) {
                 System.out.println("Updating " + details.getProductName());
                 DatabaseHandler.updateProductValues(details.getProductName(), DatabaseHandler.getProductQTY(details.getProductName()) - details.getProductQTY(), details.getProductCost());
+                // adding product Movement
+                     ProductMovement productMovement = new ProductMovement();
+                     productMovement.setCurrentQuantity(DatabaseHandler.getProductQTY(details.getProductName()));
+                     productMovement.setDate(LocalDate.now().toString());
+                     productMovement.setDetails("حذف فاتورة مشتروات رقم : "+ purchaseInvoiceHeader.getId());
+                     productMovement.setInQuantity(0);
+                     productMovement.setOutQuantity(details.getProductQTY());
+                     productMovement.setProdcutName(details.getProductName());
+                     productMovement.setProductCode(getProductCode(details.getProductName()));
+                     productMovement.setPurchaseInvoiceID(0);
+                     productMovement.setSalesInvoiceID(0);
+                     DatabaseHandler.addProductMovement(productMovement);
             }
             System.out.println("Deleteing ");
             DatabaseHandler.deletePurchaseInvoice(purchaseInvoiceHeader.getId());
             //AlertMaker.showInformationAlert("تم حذف الفاتورة بنجاح");
+            
+            // UPDATING PRODUCT COST 
+            
+            for (PurchaseInvoiceDetails details : purchaseInvoiceDetailsList)
+            {
+                        int previousPurchaseInvoiceId = DatabaseHandler.getPreviousPurchaseInvoiceId(details.getProductName());
+                        double previousCost = DatabaseHandler.getPreviousProductCost(previousPurchaseInvoiceId, details.getProductName());
+                        Product product = new Product();
+                        product.setProductCost(previousCost);
+                        product.setProductName(details.getProductName());
+                        DatabaseHandler.updateProductCost(product);
+            }
+            
+            
             
             setTableData();
             filterTableData();
@@ -177,6 +207,5 @@ public class PurchaseInvoicesListController implements Initializable {
 
     private void updateProductQtyAndCost(Product product) {
         
-    }
-    
+    } 
 }
