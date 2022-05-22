@@ -1641,4 +1641,54 @@ public class DatabaseHandler {
          }
          return cost;
      }
+     
+     public static List<InventoryAdjustment> getInventoryAdjustmentsBySQL(String sql)
+     {
+         List<InventoryAdjustment> list = new ArrayList(); ;
+         try
+         {
+             con = getConnection();
+             ResultSet rs = execQuery(sql);
+             while(rs.next())
+             {
+                 InventoryAdjustment adjustment = new InventoryAdjustment();
+                 adjustment.setAdjustmentQTY(rs.getDouble("adjustmentQTY"));
+                 adjustment.setDate(rs.getString("date"));
+                 adjustment.setDetails(rs.getString("details"));
+                 adjustment.setId(rs.getInt("id"));
+                 adjustment.setProductCode(rs.getString("productCode"));
+                 adjustment.setProductName(rs.getString("productName"));
+                 adjustment.setProductQtyAfterAdjustment(rs.getDouble("productQtyAfterAdjustment"));
+                 list.add(adjustment);
+             }
+         }
+         catch(SQLException ex)
+         {
+             ex.printStackTrace();
+         }
+         return list;
+     }
+     
+     public static boolean isProductCodeExisits(String productCode)
+     {
+         boolean exisits = false;
+         
+         String sql = "SELECT * FROM tbProduct WHERE productCode = '"+ productCode + "';";
+         
+         try
+         {
+            con = getConnection();
+            ResultSet rs = execQuery(sql);
+             while (rs.next()) 
+             {                 
+                 exisits = true;
+             }
+         }
+         catch(SQLException ex)
+         {
+             ex.printStackTrace();
+         }
+         
+         return exisits;
+     }
 }

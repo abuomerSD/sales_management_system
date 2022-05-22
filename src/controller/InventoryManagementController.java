@@ -51,6 +51,20 @@ public class InventoryManagementController implements Initializable {
         StageShower stageShower = new StageShower();
         stageShower.show("/view/inventory_adjustment.fxml", "التسوية المخزنية", false);
     }
+    
+    @FXML
+    private void showProductMovementReportStage()
+    {
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/productMovementReport.fxml", "تقرير حركة الصنف", false);
+    }
+    
+    @FXML
+    private void showProductAdjustmentReportStage()
+    {
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/productAdjustmentReport.fxml", "تقرير التسوية المخزنية", false);
+    }
 
     private void setCountLabels() {
         lbProductsCount.setText(String.valueOf(DatabaseHandler.getProductsCount()));

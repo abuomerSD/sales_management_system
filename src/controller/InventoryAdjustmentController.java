@@ -42,6 +42,10 @@ public class InventoryAdjustmentController implements Initializable {
     {
         try
         {
+            if (! DatabaseHandler.isProductCodeExisits(txtProductCode.getText())) {
+               AlertMaker.showErrorAlert("لا يوجد صنف بهذا الكود");
+               return;
+            }
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-YYYY");
             Date date = new Date();
             String formatedDate = simpleDateFormat.format(date);
