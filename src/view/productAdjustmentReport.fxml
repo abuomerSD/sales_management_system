@@ -17,7 +17,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="63.0" layoutY="-8.0" prefHeight="217.0" prefWidth="457.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="txtProductCode" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="355.0" promptText="ادخل كود الصنف">
+            <TextField fx:id="txtProductCode" onAction="#printReport" nodeOrientation="RIGHT_TO_LEFT" prefHeight="39.0" prefWidth="355.0" promptText="ادخل كود الصنف">
                <font>
                   <Font size="18.0" />
                </font>

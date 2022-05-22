@@ -1045,7 +1045,7 @@ public class DatabaseHandler {
             productMovement.setOutQuantity(inventoryAdjustment.getAdjustmentQTY());
         }
         productMovement.setCurrentQuantity(inventoryAdjustment.getProductQtyAfterAdjustment());
-        productMovement.setDetails("تسوية مخزنية");
+        productMovement.setDetails(inventoryAdjustment.getDetails());
         
         con = getConnection();
         execUpdate(sql);
@@ -1690,5 +1690,37 @@ public class DatabaseHandler {
          }
          
          return exisits;
+     }
+     
+     public static List<ProductMovement> getProductMovementListBySQL(String sql)
+     {
+      List<ProductMovement> list = new ArrayList<>();
+      
+      try
+      {
+          con = getConnection();
+          ResultSet rs = execQuery(sql);
+          while(rs.next())
+          {
+              ProductMovement movement = new ProductMovement();
+              movement.setCurrentQuantity(rs.getDouble("currentQuantity"));
+              movement.setDate(rs.getString("date"));
+              movement.setDetails(rs.getString("Details"));
+              movement.setId(rs.getInt("id"));
+              movement.setInQuantity(rs.getDouble("inQuantity"));
+              movement.setOutQuantity(rs.getDouble("outQuantity"));
+              movement.setProductCode(rs.getString("productCode"));
+              movement.setProdcutName(rs.getString("productName"));
+              movement.setPurchaseInvoiceID(rs.getInt("purchaseInvoiceID"));
+              movement.setSalesInvoiceID(rs.getInt("salesInvoiceID"));
+              list.add(movement);
+          }
+      }
+      catch(SQLException ex)
+      {
+          ex.printStackTrace();
+      }
+      
+      return list;
      }
 }

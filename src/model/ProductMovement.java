@@ -12,14 +12,14 @@ package model;
 public class ProductMovement {
     int id;
     String date;
-    String ProductCode;
-    String ProdcutName;
+    String productCode;
+    String prodcutName;
     int salesInvoiceID;
     int purchaseInvoiceID;
     double inQuantity;
     double outQuantity;
     double currentQuantity;
-    String Details;
+    String details;
 
     public ProductMovement() {
     }
@@ -27,14 +27,14 @@ public class ProductMovement {
     public ProductMovement(int id, String date, String ProductCode, String ProdcutName, int salesInvoiceID, int purchaseInvoiceID, double inQuantity, double outQuantity, double currentQuantity, String Details) {
         this.id = id;
         this.date = date;
-        this.ProductCode = ProductCode;
-        this.ProdcutName = ProdcutName;
+        this.productCode = ProductCode;
+        this.prodcutName = ProdcutName;
         this.salesInvoiceID = salesInvoiceID;
         this.purchaseInvoiceID = purchaseInvoiceID;
         this.inQuantity = inQuantity;
         this.outQuantity = outQuantity;
         this.currentQuantity = currentQuantity;
-        this.Details = Details;
+        this.details = Details;
     }
 
     public double getCurrentQuantity() {
@@ -64,19 +64,19 @@ public class ProductMovement {
     }
 
     public String getProductCode() {
-        return ProductCode;
+        return productCode;
     }
 
     public void setProductCode(String ProductCode) {
-        this.ProductCode = ProductCode;
+        this.productCode = ProductCode;
     }
 
     public String getProdcutName() {
-        return ProdcutName;
+        return prodcutName;
     }
 
     public void setProdcutName(String ProdcutName) {
-        this.ProdcutName = ProdcutName;
+        this.prodcutName = ProdcutName;
     }
 
     public int getSalesInvoiceID() {
@@ -112,16 +112,16 @@ public class ProductMovement {
     }
 
     public String getDetails() {
-        return Details;
+        return details;
     }
 
     public void setDetails(String Details) {
-        this.Details = Details;
+        this.details = Details;
     }
 
     @Override
     public String toString() {
-        return "ProductMovement{" + "id=" + id + ", date=" + date + ", ProductCode=" + ProductCode + ", ProdcutName=" + ProdcutName + ", salesInvoiceID=" + salesInvoiceID + ", purchaseInvoiceID=" + purchaseInvoiceID + ", inQuantity=" + inQuantity + ", outQuantity=" + outQuantity + ", currentQuantity=" + currentQuantity + ", Details=" + Details + '}';
+        return "ProductMovement{" + "id=" + id + ", date=" + date + ", ProductCode=" + productCode + ", ProdcutName=" + prodcutName + ", salesInvoiceID=" + salesInvoiceID + ", purchaseInvoiceID=" + purchaseInvoiceID + ", inQuantity=" + inQuantity + ", outQuantity=" + outQuantity + ", currentQuantity=" + currentQuantity + ", Details=" + details + '}';
     }
     
     

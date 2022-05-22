@@ -7,9 +7,10 @@
 	<field name="id" class="java.lang.Integer"/>
 	<field name="date" class="java.lang.String"/>
 	<field name="productCode" class="java.lang.String"/>
-	<field name="productName" class="java.lang.String"/>
-	<field name="adjustmentQTY" class="java.lang.Double"/>
-	<field name="productQtyAfterAdjustment" class="java.lang.String"/>
+	<field name="prodcutName" class="java.lang.String"/>
+	<field name="inQuantity" class="java.lang.Double"/>
+	<field name="outQuantity" class="java.lang.Double"/>
+	<field name="currentQuantity" class="java.lang.Double"/>
 	<field name="details" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -35,7 +36,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="15" isBold="true"/>
 				</textElement>
-				<text><![CDATA[تقرير التسوية المخزنية]]></text>
+				<text><![CDATA[تقرير حركة الصنف]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="590" y="120" width="111" height="21" uuid="d7001785-3d30-4e86-9d4b-dccc12b009bd"/>
@@ -68,7 +69,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[رقم التسوية]]></text>
+				<text><![CDATA[رقم الحركة]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="600" y="31" width="100" height="30" forecolor="#FF0400" uuid="0a644777-59d7-4c7d-9668-66bf839a8e78">
@@ -116,8 +117,8 @@
 				<text><![CDATA[اسم الصنف]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="210" y="31" width="76" height="30" forecolor="#FF0400" uuid="549e46d6-cfce-4168-b190-d0809db42931">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c643275d-e32f-4e4e-a92f-253d58ff85d6"/>
+				<reportElement x="230" y="31" width="56" height="30" forecolor="#FF0400" uuid="fc1dd158-9544-4557-b337-4258c9aefcdd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f1fbdc7-651d-4f77-bf9d-81ef5460f64d"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -128,11 +129,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[الكمية]]></text>
+				<text><![CDATA[الكمية الواردة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="140" y="31" width="70" height="30" forecolor="#FF0400" uuid="3fc35568-9a0b-414f-8862-25d6794afdba">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23c6a461-752e-4f8d-b350-95264c6e02ab"/>
+				<reportElement x="170" y="31" width="60" height="30" forecolor="#FF0400" uuid="7834cbab-25ae-400a-9d69-268ef9550fb8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a249b895-b898-4a34-bd66-46c0ef55e4ce"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -143,11 +144,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[الكمية بعد التسوية]]></text>
+				<text><![CDATA[الكمية الخارجة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="31" width="140" height="30" forecolor="#FF0400" uuid="233d882e-7ed3-4e8f-95d0-c0129160f467">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f9b634a-89be-4ef6-82a8-306e3f653b48"/>
+				<reportElement x="110" y="31" width="60" height="30" forecolor="#FF0400" uuid="2251f7bc-8ae7-4617-a671-29d3910afda0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d4dfdd1-b0fb-4cc9-a6c0-445680626fad"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -158,12 +159,27 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[تفاصيل التسوية]]></text>
+				<text><![CDATA[الرصيد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="31" width="110" height="30" forecolor="#FF0400" uuid="da567ef1-1869-4fa4-ac5d-804136a9023f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea701378-c68e-4bf2-96ed-0869218e9498"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تفاصيل الحركة]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="700" y="0" width="79" height="30" uuid="d3a7675f-eb67-446e-a259-10235da15c3d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6025eb62-7db6-4e83-bbd4-d10e2d5f15e2"/>
@@ -210,8 +226,8 @@
 				<textFieldExpression><![CDATA[$F{productCode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="286" y="0" width="154" height="30" uuid="115ab6a0-44c4-48fa-92b2-290aee19e2df">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca8a138a-796b-467d-b7bb-c8799521e84b"/>
+				<reportElement x="230" y="0" width="56" height="30" uuid="3007598c-5da5-479d-8ffb-8443726c1b90">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2f1fbdc7-651d-4f77-bf9d-81ef5460f64d"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -222,11 +238,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{productName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{inQuantity}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="0" width="76" height="30" uuid="63ae34b6-f216-4438-9798-7b38cc30dc80">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c643275d-e32f-4e4e-a92f-253d58ff85d6"/>
+				<reportElement x="170" y="0" width="60" height="30" uuid="6de0a257-cede-4c72-8545-fd0d510d6d00">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a249b895-b898-4a34-bd66-46c0ef55e4ce"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -237,11 +253,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{adjustmentQTY}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{outQuantity}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="0" width="70" height="30" uuid="39c1ac49-cdc3-49a6-aaa0-6ee8b882a503">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="23c6a461-752e-4f8d-b350-95264c6e02ab"/>
+				<reportElement x="110" y="0" width="60" height="30" uuid="b55a236b-a5e4-4880-98d8-edd4d94ec2af">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7d4dfdd1-b0fb-4cc9-a6c0-445680626fad"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -252,11 +268,11 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{productQtyAfterAdjustment}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{currentQuantity}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="140" height="30" uuid="6d3eaa4b-67d3-468a-a22e-842833cef99b">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f9b634a-89be-4ef6-82a8-306e3f653b48"/>
+				<reportElement x="0" y="0" width="110" height="30" uuid="82019ba5-eac0-4181-a128-d89b653c7fd5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea701378-c68e-4bf2-96ed-0869218e9498"/>
 				</reportElement>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -268,6 +284,21 @@
 					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{details}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="154" height="30" uuid="6d786424-31a3-4824-a48c-baca8ff45db4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="453f2d9f-cdf8-46ed-8e5c-7c4e90a360d2"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prodcutName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
