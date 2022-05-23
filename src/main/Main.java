@@ -18,10 +18,10 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage){
-        String stageURL = "/view/main_stage.fxml";
+        String stageURL = "/view/login.fxml";
         
         StageShower stageShower = new StageShower();
-        stageShower.show(stageURL, "الواجهة الرئيسية", true);
+        stageShower.show(stageURL, "تسجيل الدخول", false);
         DatabaseHandler.createTables();  
     }
     

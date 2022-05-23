@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import model.UserDetails;
 import resources.AlertMaker;
 
 /**
@@ -49,6 +50,9 @@ public class MainStageController implements Initializable {
 
     @FXML
     private JFXButton btnSalesManagement;
+    
+    @FXML
+    private JFXButton btnInventory;
 
     @FXML
     void showSalesManagmentStage(ActionEvent event) {
@@ -95,6 +99,20 @@ public class MainStageController implements Initializable {
             ex.printStackTrace();
             AlertMaker.showErrorAlert(ex.getMessage());
         }
+    }
+    
+    public void setUserWindowOptions(UserDetails user)
+    {
+        if(user.getSalesPermissions() != 1)
+            btnSalesManagement.setDisable(true);
+        if(user.getPurchasePermissions() != 1)
+            btnPurchaseManagement.setDisable(true);
+        if(user.getInventoryPermissions() != 1)
+            btnInventory.setDisable(true);
+        if(user.getCustomersAndSuppliersPermissions() != 1)
+            btnAccount.setDisable(true);
+        if(user.getId() > 1)
+            btnSettings.setDisable(true);
     }
         
     
