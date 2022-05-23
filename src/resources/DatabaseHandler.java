@@ -28,6 +28,7 @@ import model.ProductMovement;
 import model.PurchaseInvoiceDetails;
 import model.PurchaseInvoiceHeader;
 import model.Supplier;
+import model.UserDetails;
 
 /**
  *
@@ -65,13 +66,7 @@ public class DatabaseHandler {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }    //catch (ClassNotFoundException ex) {
-//            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        }   
         return con;
     }
     
@@ -134,6 +129,8 @@ public class DatabaseHandler {
         createInventoryAdjustmentTable();
         createDollarValueTable();
         insertDefaultDollarValue();
+        createUsersDetailsTable();
+        insertDefaultUser();
     }
     
     
@@ -1723,4 +1720,134 @@ public class DatabaseHandler {
       
       return list;
      }
+
+    private static void createUsersDetailsTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS'tbUserDetails' (" +
+                                            "	'id'	INTEGER NOT NULL," +
+                                            "	'username'	VARCHAR(100)," +
+                                            "	'password'	VARCHAR(100)," +
+                                            "	'salesPermissions'	INTEGER," +
+                                            "	'purchasePermissions'	INTEGER," +
+                                            "	'inventoryPermissions'	INTEGER," +
+                                            "	'customersAndSuppliersPermissions'	INTEGER," +
+                                            "	PRIMARY KEY('id' AUTOINCREMENT)" +
+                                            ");";
+        
+        con = getConnection();
+        execUpdate(sql);
+    }
+    
+    private static void insertDefaultUser()
+    {
+        String sql = "INSERT INTO " +
+                                "tbUserDetails (username,password,salesPermissions,purchasePermissions,inventoryPermissions," +
+                                "customersAndSuppliersPermissions)" +
+                                "VALUES " +
+                                "('admin','admin2022',1,1,1,1);";
+        
+        String getUserSql = "SELECT * FROM tbUserDetails WHERE id = 1";
+        con = getConnection();
+        try
+        {
+            ResultSet rs = execQuery(getUserSql);
+            if (rs.next()) {
+                System.out.println("user already added");
+            }
+            else {
+                if (execUpdate(sql)) {
+                        System.out.println("inserted the default user");
+               }
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static ObservableList<UserDetails> getAllUsers(){
+        ObservableList<UserDetails> list = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM tbUserDetails";
+        
+        con = getConnection();
+        ResultSet rs = execQuery(sql);
+        try{
+            while (rs.next()) {                
+                UserDetails user = new UserDetails();
+                user.setCustomersAndSuppliersPermissions(rs.getInt("customersAndSuppliersPermissions"));
+                user.setId(rs.getInt("id"));
+                user.setInventoryPermissions(rs.getInt("inventoryPermissions"));
+                user.setPassWord(rs.getString("password"));
+                user.setPurchasePermissions(rs.getInt("purchasePermissions"));
+                user.setSalesPermissions(rs.getInt("salesPermissions"));
+                user.setUserName(rs.getString("username"));
+                list.add(user);
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        return list;
+    }
+    
+    public static void addUser(UserDetails user)
+    {
+        String sql = "INSERT INTO " +
+                                "tbUserDetails (username,password,salesPermissions,purchasePermissions,inventoryPermissions," +
+                                "customersAndSuppliersPermissions)" +
+                                "VALUES " +
+                                "(?,?,?,?,?,?);";
+        
+        con = getConnection();
+        
+        try
+        {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getPassWord());
+            ps.setInt(3, user.getSalesPermissions());
+            ps.setInt(4, user.getPurchasePermissions());
+            ps.setInt(5, user.getInventoryPermissions());
+            ps.setInt(6, user.getCustomersAndSuppliersPermissions());
+            if (ps.execute()) {
+                System.out.println("user added successfully");
+                AlertMaker.showInformationAlert("تم إضافة المستخدم بنجاح");
+            }
+        }
+        catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+    
+    public static void updateUser(UserDetails user)
+    {
+        String sql = "UPDATE "
+                + "tbUserDetails "
+                + "SET "
+                + "username=?,password=?,salesPermissions=?,purchasePermissions=?"
+                + ",inventoryPermissions=?,customersAndSuppliersPermissions=? "
+                + "WHERE "
+                + "id = ?;";
+        
+        con = getConnection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, user.getUserName());
+            ps.setString(2, user.getPassWord());
+            ps.setInt(3, user.getSalesPermissions());
+            ps.setInt(4, user.getPurchasePermissions());
+            ps.setInt(5, user.getInventoryPermissions());
+            ps.setInt(6, user.getCustomersAndSuppliersPermissions());
+            ps.setInt(7, user.getId());
+            if(ps.execute())
+            {
+                AlertMaker.showInformationAlert("تم تحديث المستخدم بنجاح");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

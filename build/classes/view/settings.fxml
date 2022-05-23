@@ -1,11 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingsController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="533.0" prefWidth="1182.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.SettingsController">
+   <children>
+      <HBox layoutX="26.0" layoutY="66.0" prefHeight="499.0" prefWidth="777.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="533.0" prefWidth="866.0">
+               <children>
+                  <TableView fx:id="tbUsers" prefHeight="485.0" prefWidth="841.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="75.0" text="الرقم" />
+                      <TableColumn fx:id="colUsername" prefWidth="154.0" text="اسم المستخدم" />
+                        <TableColumn fx:id="colPassWord" prefWidth="152.0" text="كلمة السر" />
+                        <TableColumn fx:id="colSalesPer" prefWidth="98.0" text="صلاحيات المبيعات" />
+                        <TableColumn fx:id="colPurchasePer" prefWidth="115.0" text="صلاحيات المشتروات" />
+                        <TableColumn fx:id="colInventoryPer" prefWidth="97.0" text="صلاحيات المخزون" />
+                        <TableColumn fx:id="colCustomersPer" prefWidth="157.0" text="صلاحيات العملاء و الموردين" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#getUserFromTable" text="تعديل" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="533.0" prefWidth="327.0">
+               <children>
+                  <TextField fx:id="txtUsername" promptText="اسم المستخدم">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="txtPassword" promptText="كلمة المرور">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <CheckBox fx:id="cbSalesPermission" mnemonicParsing="false" text="صلاحيات إدارة المبيعات">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="cbPurchasePermission" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" text="صلاحيات إدارة المشتروات">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="cbInventoryPermission" layoutX="10.0" layoutY="118.0" mnemonicParsing="false" text="صلاحيات إدارة المخزون">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox fx:id="cbCustomersPermission" layoutX="10.0" layoutY="152.0" mnemonicParsing="false" text="صلاحيات إدارة العملاء و الموردين">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton onAction="#addUser" prefHeight="56.0" prefWidth="124.0" styleClass="normalButton" text="إضافة" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="109.0" layoutY="32.0" onAction="#editUser" prefHeight="56.0" prefWidth="124.0" styleClass="editButton" text="تعديل" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

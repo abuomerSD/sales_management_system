@@ -36,7 +36,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="15" isBold="true"/>
 				</textElement>
-				<text><![CDATA[تقرير التسوية المخزنية]]></text>
+				<text><![CDATA[تقرير حركة الصنف]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="590" y="120" width="111" height="21" uuid="d7001785-3d30-4e86-9d4b-dccc12b009bd"/>
