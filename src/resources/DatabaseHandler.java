@@ -778,19 +778,6 @@ public class DatabaseHandler {
             
             execUpdate(detailsSQL);
             
-            // update products table and set the  new quantities
- 
-            double oldQTY = getProductQTY(purchaseInvoiceDetails.getProductName());
-            double newQTY = oldQTY + purchaseInvoiceDetails.getProductQTY();
-        
-            String updateQTySQl = "Update tbProduct SET productQuantity = "
-                    + newQTY 
-                    + " WHERE productName = '"
-                    + purchaseInvoiceDetails.getProductName() 
-                    +"';"; 
-            System.out.println(updateQTySQl);
-            execUpdate(updateQTySQl);
-            
             // update product cost with the  new value
             
             double oldProductQTY = getProductQTY(purchaseInvoiceDetails.getProductName());
@@ -809,16 +796,18 @@ public class DatabaseHandler {
             
             System.out.println("current product Cost = " +purchaseInvoiceDetails.getProductCost());
             
-            double newCost = (oldCostSum + newCostSum) / (oldProductQTY + newProductQtyFromPurchaseInvoice) ;
-            
-            // fixing Zero Qty Products cost bug
             
             Product product = new Product();
             product.setProductName(purchaseInvoiceDetails.getProductName());
             product.setProductCode(purchaseInvoiceDetails.getProductCode());
             
+            
+            // fixing Zero Qty Products cost bug
+            double newCost;
             if(isProductQtyZero(product))
                 newCost = purchaseInvoiceDetails.getProductCost();
+            else
+                newCost = (oldCostSum + newCostSum) / (oldProductQTY + newProductQtyFromPurchaseInvoice) ;
                 
             System.out.println("newCost = "+ newCost);
             
@@ -831,6 +820,21 @@ public class DatabaseHandler {
             
             System.out.println(updateCostSQL);
             execUpdate(updateCostSQL);
+            
+            // update products table and set the  new quantities
+ 
+            double oldQTY = getProductQTY(purchaseInvoiceDetails.getProductName());
+            double newQTY = oldQTY + purchaseInvoiceDetails.getProductQTY();
+        
+            String updateQTySQl = "Update tbProduct SET productQuantity = "
+                    + newQTY 
+                    + " WHERE productName = '"
+                    + purchaseInvoiceDetails.getProductName() 
+                    +"';"; 
+            System.out.println(updateQTySQl);
+            execUpdate(updateQTySQl);
+            
+            
             
         }
         
@@ -1343,7 +1347,7 @@ public class DatabaseHandler {
             while(rs.next())
             {
                 double qty = rs.getDouble("productQuantity");
-                if(qty != 0)
+                if(qty == 0)
                 {
                     check = true;
                 }

@@ -203,6 +203,10 @@ public class AddProductController implements Initializable {
     }
 
     private void addProductMovement(Product product) {
+        
+        if (product.getProductQuantity() == 0)
+            return;
+        
         ProductMovement productMovement = new ProductMovement();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-YYYY");

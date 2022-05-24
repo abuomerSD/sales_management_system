@@ -434,13 +434,13 @@ public class InvoiceController implements Initializable {
         colSearchProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
         colSearchProductQTY.setCellValueFactory(new PropertyValueFactory<Product, Double>("productQuantity"));
         colSearchProductPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("productPrice"));
-        ObservableList productsList = DatabaseHandler.getProductsList();
+        ObservableList productsList = DatabaseHandler.getProductsListWithDollarValue();
         tbSearchProduct.setItems(productsList);
     }
     
     
     public void filterSearchTable(){
-        ObservableList productsList = DatabaseHandler.getProductsList();
+        ObservableList productsList = DatabaseHandler.getProductsListWithDollarValue();
         FilteredList<Product> filteredData = new FilteredList<>(productsList, b -> true);
         txtProductName.textProperty().addListener((observable, oldValue, newValue)->{
            filteredData.setPredicate((Predicate<Product>) product ->{

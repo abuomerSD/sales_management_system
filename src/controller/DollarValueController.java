@@ -40,8 +40,6 @@ public class DollarValueController implements Initializable {
         try
         {
             DatabaseHandler.updateDollarValue(dollarValue);
-            StageShower stageShower  =new StageShower();
-            stageShower.show("/view/main_stage.fxml", "الواجهة الرئيسية", true);
             Stage stage = (Stage) txtDollarValue.getScene().getWindow();
             stage.close();
         }
