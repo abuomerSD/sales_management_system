@@ -221,7 +221,7 @@ public class DatabaseHandler {
     
     private static void createProductMovementTable(){
         String sql = "CREATE TABLE IF NOT EXISTS'tbProductMovement' (" +
-            "	'id'	INTEGER NOT NULL," +
+            "	'id'	INTEGER," +
             "	'date'	VARCHAR(50)," +
             "	'productCode'	VARCHAR(200)," +
             "	'productName'	VARCHAR(200)," +
@@ -230,9 +230,9 @@ public class DatabaseHandler {
             "	'inQuantity'	DOUBLE," +
             "	'outQuantity'	DOUBLE," +
             "	'currentQuantity'	DOUBLE," +
-            "	'Details'	VARCHAR(50)," +
-            "	PRIMARY KEY('id' AUTOINCREMENT)" +
+            "	'Details'	VARCHAR(50)" +
             ");";
+
         
         con = getConnection();
         execUpdate(sql);

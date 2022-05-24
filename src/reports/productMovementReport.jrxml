@@ -4,7 +4,6 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="id" class="java.lang.Integer"/>
 	<field name="date" class="java.lang.String"/>
 	<field name="productCode" class="java.lang.String"/>
 	<field name="prodcutName" class="java.lang.String"/>
@@ -57,22 +56,7 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="700" y="31" width="79" height="30" forecolor="#FF0400" uuid="5be3f365-a9aa-4472-a6d3-cbcd91b35efd">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6025eb62-7db6-4e83-bbd4-d10e2d5f15e2"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[رقم الحركة]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="600" y="31" width="100" height="30" forecolor="#FF0400" uuid="0a644777-59d7-4c7d-9668-66bf839a8e78">
+				<reportElement x="678" y="31" width="100" height="30" forecolor="#FF0400" uuid="0a644777-59d7-4c7d-9668-66bf839a8e78">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6327fd3-fe6a-48ff-964f-516a7c5b9d74"/>
 				</reportElement>
 				<box>
@@ -87,7 +71,7 @@
 				<text><![CDATA[التاريخ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="440" y="31" width="160" height="30" forecolor="#FF0400" uuid="f014da8a-6120-415e-9746-6b1b7428a394">
+				<reportElement x="490" y="31" width="188" height="30" forecolor="#FF0400" uuid="f014da8a-6120-415e-9746-6b1b7428a394">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1cadc395-5508-457d-9747-8519ef764b4d"/>
 				</reportElement>
 				<box>
@@ -102,7 +86,7 @@
 				<text><![CDATA[كود الصنف]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="286" y="31" width="154" height="30" forecolor="#FF0400" uuid="89b6ed85-4d7a-4ec8-a273-39a223b67b1c">
+				<reportElement x="286" y="31" width="204" height="30" forecolor="#FF0400" uuid="89b6ed85-4d7a-4ec8-a273-39a223b67b1c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ca8a138a-796b-467d-b7bb-c8799521e84b"/>
 				</reportElement>
 				<box>
@@ -181,22 +165,7 @@
 	<detail>
 		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="700" y="0" width="79" height="30" uuid="d3a7675f-eb67-446e-a259-10235da15c3d">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6025eb62-7db6-4e83-bbd4-d10e2d5f15e2"/>
-				</reportElement>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="DejaVu Sans" size="10" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="600" y="0" width="100" height="30" uuid="2c6013ed-e1a0-44fc-838f-74a3daa6f962">
+				<reportElement x="678" y="0" width="100" height="30" uuid="2c6013ed-e1a0-44fc-838f-74a3daa6f962">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6327fd3-fe6a-48ff-964f-516a7c5b9d74"/>
 				</reportElement>
 				<box>
@@ -211,7 +180,7 @@
 				<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="440" y="0" width="160" height="30" uuid="04c4f73f-6e72-43ad-a7c6-31b13c499d5c">
+				<reportElement x="490" y="0" width="188" height="30" uuid="04c4f73f-6e72-43ad-a7c6-31b13c499d5c">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1cadc395-5508-457d-9747-8519ef764b4d"/>
 				</reportElement>
 				<box>
@@ -286,7 +255,7 @@
 				<textFieldExpression><![CDATA[$F{details}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="286" y="0" width="154" height="30" uuid="6d786424-31a3-4824-a48c-baca8ff45db4">
+				<reportElement x="286" y="0" width="204" height="30" uuid="6d786424-31a3-4824-a48c-baca8ff45db4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="453f2d9f-cdf8-46ed-8e5c-7c4e90a360d2"/>
 				</reportElement>
 				<box>
