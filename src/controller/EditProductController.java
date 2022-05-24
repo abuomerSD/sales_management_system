@@ -7,10 +7,12 @@ package controller;
 
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import model.Product;
 import resources.AlertMaker;
 import resources.DatabaseHandler;
 
@@ -56,8 +58,10 @@ public class EditProductController implements Initializable {
 
     @FXML
     void editProduct(ActionEvent event) {
-        double cost = Double.valueOf(txtProductCost.getText());
-        double price = Double.valueOf(txtProductPrice.getText());
+        DecimalFormat df = new DecimalFormat("#.0000");
+        
+        double cost = Double.valueOf(df.format(Double.valueOf(txtProductCost.getText())));
+        double price = Double.valueOf(df.format(Double.valueOf(txtProductPrice.getText())));
         String code = txtProductCode.getText();
         String name = txtProductName.getText();
         
@@ -78,6 +82,14 @@ public class EditProductController implements Initializable {
             ex.printStackTrace();
         }
 
+    }
+    
+    public void setProductDataForEdit(Product product)
+    {
+        txtProductCode.setText(product.getProductCode());
+        txtProductCost.setText(String.valueOf(product.getProductCost()));
+        txtProductName.setText(product.getProductName());
+        txtProductPrice.setText(String.valueOf(product.getProductPrice()));
     }
     
 }

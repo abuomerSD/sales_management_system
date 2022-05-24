@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import javafx.collections.FXCollections;
@@ -24,15 +23,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Product;
-import resources.AlertMaker;
 import resources.DatabaseHandler;
 import resources.ReportViewer;
 import resources.StageShower;
@@ -123,8 +119,19 @@ public class ProductListControlController implements Initializable {
 
     @FXML
     void editProductDetails(ActionEvent event) {
-        StageShower stageShower = new StageShower();
-        stageShower.show("/view/editProduct.fxml", "تعديل الصنف", false);
+        Product product = tbProduct.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/editProduct.fxml"));
+        try {
+            Parent root = loader.load();
+            EditProductController controller = (EditProductController) loader.getController();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("تعديل الصنف");
+            stage.show();
+            controller.setProductDataForEdit(product);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
     
