@@ -60,15 +60,10 @@ public class AccountManagementController implements Initializable {
     }
     
     @FXML
-    private void showCustomersAccountStage()
+    private void showDollarValueStage()
     {
-        
-    }
-    
-    @FXML
-    private void showSuppliersAccountStage()
-    {
-        
+        StageShower stageShower = new StageShower();
+        stageShower.show("/view/dollarValue.fxml", "تعديل قيمة الدولار", false);
     }
 
     private void setCountLabels() {

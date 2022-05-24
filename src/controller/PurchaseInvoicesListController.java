@@ -5,9 +5,9 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +50,7 @@ public class PurchaseInvoicesListController implements Initializable {
         // TODO
         setTableData();
         filterTableData();
+        disableEditInvoiceButton();
     }    
     
     ObservableList purchaseInvoicesList = DatabaseHandler.getPurchaseInvoicesList();
@@ -71,6 +72,9 @@ public class PurchaseInvoicesListController implements Initializable {
 
     @FXML
     private TableColumn<PurchaseInvoiceHeader, Integer> colPurchaseInvoiceNumber;
+    
+    @FXML 
+    private JFXButton btnEditInvoice;
 
     @FXML
     void deletePurchaseInvoice(ActionEvent event) {
@@ -208,4 +212,8 @@ public class PurchaseInvoicesListController implements Initializable {
     private void updateProductQtyAndCost(Product product) {
         
     } 
+
+    private void disableEditInvoiceButton() {
+        btnEditInvoice.setDisable(true);
+    }
 }

@@ -83,7 +83,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="TOP_RIGHT" nodeOrientation="RIGHT_TO_LEFT" prefHeight="186.0" prefWidth="846.0">
+            <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="186.0" prefWidth="846.0">
                <children>
                   <VBox alignment="TOP_CENTER" onMouseClicked="#showSuppliersListStage" prefHeight="156.0" prefWidth="247.0" styleClass="option4">
                      <children>
@@ -110,9 +110,9 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" onMouseClicked="#showCustomersAccountStage" prefHeight="156.0" prefWidth="247.0" styleClass="option5">
+                  <VBox alignment="TOP_CENTER" onMouseClicked="#showDollarValueStage" prefHeight="156.0" prefWidth="247.0" styleClass="option5">
                      <children>
-                        <Label text="حسابات العملاء" textFill="WHITE">
+                        <Label text="تعديل قيمة الدولار" textFill="WHITE">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -128,26 +128,6 @@
                      </children>
                      <HBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" onMouseClicked="#showSuppliersAccountStage" prefHeight="156.0" prefWidth="247.0" styleClass="option6">
-                     <children>
-                        <Label text="حسابات الموردين" textFill="WHITE">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <FontAwesomeIcon fill="WHITE" iconName="CC_VISA" size="40">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </FontAwesomeIcon>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" top="20.0" />
                      </HBox.margin>
                   </VBox>
                </children>

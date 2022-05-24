@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -49,6 +50,7 @@ public class SalesInvoicesListController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setSalesInvoicesTableData();
         filterSalesInvoiceListTable();
+        disableEditInvoiceButton();
     }    
     
     ObservableList<InvoiceHeader> salesInvoicesList = FXCollections.observableArrayList();
@@ -82,6 +84,9 @@ public class SalesInvoicesListController implements Initializable {
 
     @FXML
     private TableColumn<InvoiceHeader, Integer> colInvoiceNumber;
+    
+    @FXML
+    private JFXButton btnEditSalesInvoice;
     
     
     
@@ -204,6 +209,10 @@ public class SalesInvoicesListController implements Initializable {
     {
         StageShower stageShower = new StageShower();
         stageShower.show("/view/invoice.fxml", "فاتورة مبيعات", true);
+    }
+
+    private void disableEditInvoiceButton() {
+        btnEditSalesInvoice.setDisable(true);
     }
     
 }

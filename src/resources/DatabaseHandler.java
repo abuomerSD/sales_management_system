@@ -1075,7 +1075,7 @@ public class DatabaseHandler {
         execUpdate(sql);
     }
 
-    private static double getDollarVlaue() {
+    public static double getDollarVlaue() {
         double dollarValue = 0;
         
         String sql = "SELECT * FROM tbDollarValue WHERE id = 1";

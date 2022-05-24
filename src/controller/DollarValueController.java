@@ -28,7 +28,7 @@ public class DollarValueController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        setDollarValueTextFeild();
     }    
     
     @FXML
@@ -42,6 +42,7 @@ public class DollarValueController implements Initializable {
             DatabaseHandler.updateDollarValue(dollarValue);
             Stage stage = (Stage) txtDollarValue.getScene().getWindow();
             stage.close();
+            AlertMaker.showInformationAlert("تم تعديل قيمة الدولار بنجاح");
         }
         catch(Exception ex)
         {
@@ -49,6 +50,11 @@ public class DollarValueController implements Initializable {
             ex.printStackTrace();
         }
 
+    }
+
+    private void setDollarValueTextFeild() {
+        double dollarValue = DatabaseHandler.getDollarVlaue();
+        txtDollarValue.setText(String.valueOf(dollarValue));
     }
 
     

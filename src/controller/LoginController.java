@@ -68,8 +68,6 @@ public class LoginController implements Initializable {
                     stage.show();
                     Stage oldStage = (Stage) txtUserName.getScene().getWindow();
                     oldStage.close();
-                    StageShower stageShower = new StageShower();
-                    stageShower.show("/view/dollarValue.fxml", "تحديث قيمة الدولار لليوم", false);
                 }
 //                else
 //                {
