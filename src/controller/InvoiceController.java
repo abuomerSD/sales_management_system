@@ -6,6 +6,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
@@ -162,6 +163,7 @@ public class InvoiceController implements Initializable {
         try{
             
             DecimalFormat decimalFormat = new DecimalFormat("#.0000");
+            decimalFormat.setMaximumFractionDigits(0);
          
         //Product product = (Product) tbSearchProduct.getSelectionModel().getSelectedItem();
             System.out.println(product.getProductQuantity().toString());
@@ -179,7 +181,9 @@ public class InvoiceController implements Initializable {
             Double productQty = Double.valueOf(decimalFormat.format(Double.valueOf(txtProductQuantity.getText())));
             Double tax = Double.valueOf(decimalFormat.format(Double.valueOf(txtTax.getText())));
             Double discount = Double.valueOf(decimalFormat.format(Double.valueOf(txtDiscount.getText())));
-            Double total = Double.valueOf(decimalFormat.format(productPrice*productQty));
+            //Double total = Double.valueOf(decimalFormat.format(productPrice*productQty));
+            Double total = Double.valueOf(new BigDecimal(productPrice*productQty).toPlainString());
+            System.out.println(total);
             
             //DecimalFormat decimalFormat = new DecimalFormat("#,###.##");
             

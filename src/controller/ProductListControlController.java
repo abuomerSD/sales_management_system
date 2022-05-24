@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -47,7 +48,7 @@ public class ProductListControlController implements Initializable {
      * Initializes the controller class.
      */
     
-    ObservableList<Product> productsList = DatabaseHandler.getProductsList();
+    ObservableList<Product> productsList = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -128,7 +129,7 @@ public class ProductListControlController implements Initializable {
     }
     
     private void setProductTableItems(){
-        productsList = DatabaseHandler.getProductsList();
+        productsList = DatabaseHandler.getProductsListWithDollarValue();
         colProductCode.setCellValueFactory(new PropertyValueFactory<Product, String>("productCode"));
         colProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
         colQty.setCellValueFactory(new PropertyValueFactory<Product, Double>("productQuantity"));
@@ -140,7 +141,7 @@ public class ProductListControlController implements Initializable {
     }
 
     private void filterProductTableItems() {
-        ObservableList productsList = DatabaseHandler.getProductsList();
+        ObservableList productsList = DatabaseHandler.getProductsListWithDollarValue();
         FilteredList<Product> filteredData = new FilteredList<>(productsList, b -> true);
         txtProductName.textProperty().addListener((observable, oldValue, newValue)->{
            filteredData.setPredicate((Predicate<Product>) product ->{
