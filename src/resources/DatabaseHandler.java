@@ -1406,7 +1406,7 @@ public class DatabaseHandler {
              adjustment.setId(header.getNumber());
              adjustment.setProductCode(getProductCode(invoiceDetails.getProductName()));
              adjustment.setProductName(invoiceDetails.getProductName());
-             adjustment.setProductQtyAfterAdjustment(getProductQTY(invoiceDetails.getProductName() + invoiceDetails.getProductQuantity()));
+             adjustment.setProductQtyAfterAdjustment(getProductQTY(invoiceDetails.getProductName()) + invoiceDetails.getProductQuantity());
              
              addInventoryAdjustment(adjustment);
          }
@@ -1460,7 +1460,7 @@ public class DatabaseHandler {
          
          
          String deleteItemSql = "DELETE FROM tbInvoiceDetails WHERE invoiceNumber = "+ header.getNumber();
-         execQuery(deleteItemSql);
+         execUpdate(deleteItemSql);
          
          String headerSQL = "UPDATE tbInvoiceHeader SET date = ?, "
                                                     + "customerID = ?,"
@@ -1469,8 +1469,29 @@ public class DatabaseHandler {
                                                     + "tax = ?,"
                                                     + "discount = ?,"
                                                     + "invoiceTotal = ?,"
-                                                    + "invoiceTotalCost = ? ;";
+                                                    + "invoiceTotalCost = ?   WHERE invoiceNumber = ? ;";
+         try
+         {
+             con = getConnection();
+             PreparedStatement ps = con.prepareStatement(headerSQL);
+             ps.setString(1, header.getDate());
+             ps.setInt(2, header.getCumstomerID());
+             ps.setString(3, header.getCustomerName());
+             ps.setString(4, header.getPayType());
+             ps.setDouble(5, header.getTax());
+             ps.setDouble(6, header.getDiscount());
+             ps.setDouble(7, header.getTotal());
+             ps.setInt(8, header.getNumber());
+             ps.execute();
+             System.out.println(ps.toString());
+             System.out.println(header.getNumber());
+         }
+         catch(Exception ex)
+         {
+             ex.printStackTrace();
+         }
          System.out.println(headerSQL);
+         
          execUpdate(headerSQL);
      }
      

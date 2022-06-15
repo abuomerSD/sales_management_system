@@ -50,7 +50,7 @@ public class SalesInvoicesListController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         setSalesInvoicesTableData();
         filterSalesInvoiceListTable();
-        disableEditInvoiceButton();
+        //disableEditInvoiceButton();
     }    
     
     ObservableList<InvoiceHeader> salesInvoicesList = FXCollections.observableArrayList();
@@ -127,6 +127,7 @@ public class SalesInvoicesListController implements Initializable {
             Stage stage = new Stage();
             stage.setTitle("تعديل فاتورة مبيعات");
             stage.setScene(new Scene(parent));
+            stage.setMaximized(true);
             stage.show();
         }
         catch(Exception ex)
