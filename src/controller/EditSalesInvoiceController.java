@@ -70,6 +70,7 @@ public class EditSalesInvoiceController extends InvoiceController implements Ini
         {
             ex.printStackTrace();
         }
+        List<InvoiceDetails> newDetailsList = new ArrayList();
         
         DatabaseHandler.editSalesInvoice(invoiceHeader, super.invoiceDetailsList);
         btnSaveInvoice.setDisable(true);

@@ -1411,8 +1411,11 @@ public class DatabaseHandler {
              addInventoryAdjustment(adjustment);
          }
          
+         // deleting old invoice details 
+         String deleteItemSql = "DELETE FROM tbInvoiceDetails WHERE invoiceNumber = "+ header.getNumber();
+         execUpdate(deleteItemSql);
 
-
+         // adding new invoice details to database
          for (int i = 0; i< newProductList.size() ; i++)
          {
              InvoiceDetails invoiceDetails = newProductList.get(i);
@@ -1459,8 +1462,7 @@ public class DatabaseHandler {
          
          
          
-         String deleteItemSql = "DELETE FROM tbInvoiceDetails WHERE invoiceNumber = "+ header.getNumber();
-         execUpdate(deleteItemSql);
+         
          
          String headerSQL = "UPDATE tbInvoiceHeader SET date = ?, "
                                                     + "customerID = ?,"
@@ -1481,7 +1483,8 @@ public class DatabaseHandler {
              ps.setDouble(5, header.getTax());
              ps.setDouble(6, header.getDiscount());
              ps.setDouble(7, header.getTotal());
-             ps.setInt(8, header.getNumber());
+             ps.setDouble(8, header.getTotalCost());
+             ps.setInt(9, header.getNumber());
              ps.execute();
              System.out.println(ps.toString());
              System.out.println(header.getNumber());
