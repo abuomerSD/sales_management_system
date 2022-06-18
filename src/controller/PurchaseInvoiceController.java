@@ -60,6 +60,7 @@ public class PurchaseInvoiceController implements Initializable {
         setInvoiceDate();
         setSuppliersList();
         setSearchTableItems();
+        setPurchaseInvoiceTable();
         filterSearchTable();
         disableControls();
         addSupplierChoiceBoxListener();
@@ -67,86 +68,91 @@ public class PurchaseInvoiceController implements Initializable {
     }    
     
      @FXML
-    private TableView<Product> tbSearchProduct;
+    public TableView<Product> tbSearchProduct;
 
     @FXML
-    private TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductCost;
+    public TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductCost;
     
     @FXML
-    private TableColumn<Product, Double> colSearchProductCost;
+    public TableColumn<Product, Double> colSearchProductCost;
 
     @FXML
-    private ChoiceBox<String> choiceBoxSupplierName;
+    public ChoiceBox<String> choiceBoxSupplierName;
 
     @FXML
-    private DatePicker txtDate;
+    public DatePicker txtDate;
 
     @FXML
-    private TextField txtPurchaseInvoiceTotal;
+    public TextField txtPurchaseInvoiceTotal;
 
     @FXML
-    private TextField txtProductQuantity;
+    public TextField txtProductQuantity;
 
     @FXML
-    private JFXButton btnGetProductData;
+    public JFXButton btnGetProductData;
 
     @FXML
-    private TextField txtProductName;
+    public TextField txtProductName;
 
     @FXML
-    private JFXButton btnNewInvoice;
+    public JFXButton btnNewInvoice;
 
     @FXML
-    private TableColumn<Product, String> colSearchProductName;
+    public TableColumn<Product, String> colSearchProductName;
 
     @FXML
-    private TableColumn<PurchaseInvoiceDetails, String> colInvoiceProductName;
+    public TableColumn<PurchaseInvoiceDetails, String> colInvoiceProductName;
 
     @FXML
-    private JFXButton btnSaveInvoice;
+    public JFXButton btnSaveInvoice;
 
     @FXML
-    private TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductQTY;
+    public TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductQTY;
 
     @FXML
-    private TableView<PurchaseInvoiceDetails> tbPurchaseInvoice;
+    public TableView<PurchaseInvoiceDetails> tbPurchaseInvoice;
 
     @FXML
-    private JFXButton btnPrintInvoice;
+    public JFXButton btnPrintInvoice;
 
     @FXML
-    private TextField txtInvoiceNumber;
+    public TextField txtInvoiceNumber;
 
     @FXML
-    private TableColumn<Product, Double> colSearchProductQTY;
+    public TableColumn<Product, Double> colSearchProductQTY;
 
     @FXML
-    private TextField txtProductPrice;
+    public TextField txtProductPrice;
 
     @FXML
-    private JFXButton btnAddProductToInvoice;
+    public JFXButton btnAddProductToInvoice;
 
     @FXML
-    private TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductTotal;
+    public TableColumn<PurchaseInvoiceDetails, Double> colInvoiceProductTotal;
     
     @FXML
-    private TableColumn<PurchaseInvoiceDetails, Integer> colPurchaseInvoiceDetailsColNumber;
+    public TableColumn<PurchaseInvoiceDetails, Integer> colPurchaseInvoiceDetailsColNumber;
     
-    private Product product;
+    public Product product;
     ObservableList<PurchaseInvoiceDetails> productsList = FXCollections.observableArrayList();
-
-    @FXML
-    void addProductToTableView(ActionEvent event) 
+    
+    public void setPurchaseInvoiceTable()
     {
-        int colNumber = productsList.size();
-        
-        DecimalFormat decimalFormat = new DecimalFormat("#.0000");
-        
         colInvoiceProductCost.setCellValueFactory(new PropertyValueFactory<PurchaseInvoiceDetails, Double>("productCost"));
         colInvoiceProductName.setCellValueFactory(new PropertyValueFactory<PurchaseInvoiceDetails, String>("productName"));
         colInvoiceProductQTY.setCellValueFactory(new PropertyValueFactory<PurchaseInvoiceDetails, Double>("productQTY"));
         colInvoiceProductTotal.setCellValueFactory(new PropertyValueFactory<PurchaseInvoiceDetails, Double>("productTotalCost"));
         colPurchaseInvoiceDetailsColNumber.setCellValueFactory(new PropertyValueFactory<PurchaseInvoiceDetails, Integer>("colNumber"));
+    }
+
+    @FXML
+    public void addProductToTableView(ActionEvent event) 
+    {
+        int colNumber = productsList.size();
+        
+        DecimalFormat decimalFormat = new DecimalFormat("#.0000");
+        
+        
         
         PurchaseInvoiceDetails purchaseInvoiceDetails = new PurchaseInvoiceDetails();
         purchaseInvoiceDetails.setColNumber(colNumber+1);
@@ -173,7 +179,7 @@ public class PurchaseInvoiceController implements Initializable {
 
 
     @FXML
-    void getProductDetails(ActionEvent event) 
+    public void getProductDetails(ActionEvent event) 
     {
         try
         {
@@ -194,7 +200,7 @@ public class PurchaseInvoiceController implements Initializable {
     }
 
     @FXML
-    void deleteProductFromInvoiceTable(ActionEvent event) {
+    public void deleteProductFromInvoiceTable(ActionEvent event) {
         PurchaseInvoiceDetails purchaseInvoiceDetails= tbPurchaseInvoice.getSelectionModel().getSelectedItem();
         productsList.remove(purchaseInvoiceDetails);
         double newTotalValue = Double.valueOf(txtPurchaseInvoiceTotal.getText()) - purchaseInvoiceDetails.getProductTotalCost();
@@ -203,7 +209,7 @@ public class PurchaseInvoiceController implements Initializable {
     }
 
     @FXML
-    void savePurchaseInvoice(ActionEvent event) {
+    public void savePurchaseInvoice(ActionEvent event) {
         int supplierID = DatabaseHandler.getSupplierID(choiceBoxSupplierName.getValue());
         
         if(productsList.isEmpty())
@@ -230,7 +236,7 @@ public class PurchaseInvoiceController implements Initializable {
     }
 
     @FXML
-    void printPurchaseInvoice(ActionEvent event) {
+    public void printPurchaseInvoice(ActionEvent event) {
         Map parameters = new HashMap();
         List<PurchaseInvoiceDetails> purchaseInvoiceDetailsList = new ArrayList<PurchaseInvoiceDetails>();
         
@@ -257,7 +263,7 @@ public class PurchaseInvoiceController implements Initializable {
     }
 
     @FXML
-    void newPurchaseInvoice(ActionEvent event) {
+    public void newPurchaseInvoice(ActionEvent event) {
         Stage oldStage = (Stage) txtInvoiceNumber.getParent().getScene().getWindow();
         oldStage.close();
         
@@ -269,7 +275,7 @@ public class PurchaseInvoiceController implements Initializable {
    
 
     @FXML
-    void cancelGetProductData(ActionEvent event) {
+    public void cancelGetProductData(ActionEvent event) {
         txtProductName.clear();
         txtProductPrice.clear();
         txtProductQuantity.clear();
@@ -278,14 +284,14 @@ public class PurchaseInvoiceController implements Initializable {
 
     }
 
-    private void setInvoiceNumber() {
+    public void setInvoiceNumber() {
         int lastInvoiceNumber ;
         lastInvoiceNumber = DatabaseHandler.getLastPurchaseInvoiceNumber();
         Integer newInvoiceNumber = lastInvoiceNumber + 1 ;
         txtInvoiceNumber.setText(newInvoiceNumber.toString());
     }
 
-    private void setInvoiceDate() {
+    public void setInvoiceDate() {
         Date date = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println( simpleDateFormat.format(date) );
@@ -295,7 +301,7 @@ public class PurchaseInvoiceController implements Initializable {
         txtDate.setValue(localDate);
     }
 
-    private void setSuppliersList() {
+    public void setSuppliersList() {
         ObservableList suppliersObjects = DatabaseHandler.getSuppliersList();
         ObservableList suppliersNames = FXCollections.observableArrayList();
         
@@ -310,7 +316,7 @@ public class PurchaseInvoiceController implements Initializable {
         choiceBoxSupplierName.setItems(suppliersNames);
     }
 
-    private void setSearchTableItems() {
+    public void setSearchTableItems() {
         colSearchProductName.setCellValueFactory(new PropertyValueFactory<Product, String>("productName"));
         colSearchProductQTY.setCellValueFactory(new PropertyValueFactory<Product, Double>("productQuantity"));
         colSearchProductCost.setCellValueFactory(new PropertyValueFactory<Product, Double>("productCost"));
@@ -318,7 +324,7 @@ public class PurchaseInvoiceController implements Initializable {
         tbSearchProduct.setItems(productsList);
     }
 
-    private void filterSearchTable() {
+    public void filterSearchTable() {
         ObservableList productsList = DatabaseHandler.getProductsList();
         FilteredList<Product> filteredData = new FilteredList<>(productsList, b -> true);
         txtProductName.textProperty().addListener((observable, oldValue, newValue)->{
@@ -340,7 +346,7 @@ public class PurchaseInvoiceController implements Initializable {
         tbSearchProduct.setItems(sortedData);
     }
 
-    private void disableControls() {
+    public void disableControls() {
         txtDate.setDisable(true);
         txtInvoiceNumber.setDisable(true);
         //choiceBoxCustomerName.setDisable(true);
@@ -354,7 +360,7 @@ public class PurchaseInvoiceController implements Initializable {
         //choiceBoxSupplierName.setDisable(false);
     }
 
-    private void addSupplierChoiceBoxListener() {
+    public void addSupplierChoiceBoxListener() {
         choiceBoxSupplierName.getSelectionModel().selectedIndexProperty().addListener(
               (ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {
                             enableConrols();
@@ -362,7 +368,7 @@ public class PurchaseInvoiceController implements Initializable {
                             });
     }
 
-    private void enableConrols() {
+    public void enableConrols() {
         txtDate.setDisable(false);
         txtInvoiceNumber.setDisable(false);
         //choiceBoxCustomerName.setDisable(true);
@@ -377,12 +383,12 @@ public class PurchaseInvoiceController implements Initializable {
     }
     
     @FXML
-    private void setFocusOnQtyTextField()
+    public void setFocusOnQtyTextField()
     {
         txtProductQuantity.requestFocus();
     }
     
-    private void addProductMovement()
+    public void addProductMovement()
     {
                 try
         {

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditPurchaseInvoiceController">
+    <stylesheets>
+        <URL value="@/resources/style.css"/>
+    </stylesheets>
+<children>
+      <AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1366.0" styleClass="mainFxmlClass" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="txtInvoiceNumber" editable="false" layoutX="1139.0" layoutY="40.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="133.0">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1283.0" layoutY="47.0" text="رقم الفاتورة">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1058.0" layoutY="47.0" text="التاريخ">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="txtDate" layoutX="869.0" layoutY="39.0" prefHeight="37.0" prefWidth="174.0" />
+            <Label layoutX="1283.0" layoutY="109.0" text="اسم المورد">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtProductName" layoutX="879.0" layoutY="176.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="390.0">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1283.0" layoutY="183.0" text="اسم الصنف">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="1278.0" layoutY="242.0" text="التكلفة الجديدة">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtProductPrice" layoutX="1098.0" layoutY="234.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#setFocusOnQtyTextField" prefHeight="37.0" prefWidth="174.0">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtProductQuantity" layoutX="876.0" layoutY="234.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#addProductToTableView" prefHeight="37.0" prefWidth="174.0">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="1056.0" layoutY="242.0" text="العدد">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnAddProductToInvoice" layoutX="873.0" layoutY="283.0" onAction="#addProductToTableView" prefHeight="62.0" prefWidth="206.0" styleClass="normalButton" text="اضافة الصنف" textFill="WHITE">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+            </JFXButton>
+            <TableView fx:id="tbSearchProduct" layoutX="865.0" layoutY="367.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="262.0" prefWidth="466.0">
+               <columns>
+                  <TableColumn fx:id="colSearchProductName" prefWidth="289.0" text="اسم الصنف" />
+                  <TableColumn fx:id="colSearchProductQTY" prefWidth="83.0" text="العدد" />
+                  <TableColumn fx:id="colSearchProductCost" prefWidth="93.0" text="التكلفة" />
+               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#getProductDetails" text="اضافة" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <TableView fx:id="tbPurchaseInvoice" editable="true" layoutX="20.0" layoutY="31.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="442.0" prefWidth="821.0">
+               <columns>
+                  <TableColumn fx:id="colPurchaseInvoiceDetailsColNumber" prefWidth="67.0" text="الرقم" />
+                  <TableColumn fx:id="colInvoiceProductName" prefWidth="412.0" text="اسم الصنف" />
+                  <TableColumn fx:id="colInvoiceProductQTY" prefWidth="105.0" text="العدد" />
+                  <TableColumn fx:id="colInvoiceProductCost" prefWidth="112.0" text="التكلفة" />
+                  <TableColumn fx:id="colInvoiceProductTotal" minWidth="3.0" prefWidth="124.0" text="الاجمالي" />
+               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#deleteProductFromInvoiceTable" text="حذف" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TableView>
+            <TextField fx:id="txtPurchaseInvoiceTotal" editable="false" layoutX="87.0" layoutY="485.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="174.0">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+            </TextField>
+            <Label layoutX="267.0" layoutY="493.0" text="الاجمالي">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnSaveInvoice" layoutX="600.0" layoutY="567.0" onAction="#savePurchaseInvoice" prefHeight="62.0" prefWidth="241.0" styleClass="normalButton" text="حفظ الفاتورة" textFill="WHITE">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnPrintInvoice" layoutX="342.0" layoutY="567.0" onAction="#printPurchaseInvoice" prefHeight="62.0" prefWidth="241.0" styleClass="normalButton" text="طباعة الفاتورة" textFill="WHITE">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnNewInvoice" layoutX="87.0" layoutY="567.0" onAction="#newPurchaseInvoice" prefHeight="62.0" prefWidth="241.0" styleClass="normalButton" text="فاتورة جديدة" textFill="WHITE">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnGetProductData" layoutX="1098.0" layoutY="283.0" onAction="#getProductDetails" prefHeight="62.0" prefWidth="206.0" styleClass="normalButton" text="جلب البيانات" textFill="WHITE">
+               <contextMenu>
+                  <ContextMenu>
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#cancelGetProductData" text="الغاء جلب البيانات" />
+                     </items>
+                  </ContextMenu>
+               </contextMenu>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+            </JFXButton>
+            <ChoiceBox fx:id="choiceBoxSupplierName" layoutX="1119.0" layoutY="102.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="150.0" />
+            <Label fx:id="lbtax" layoutX="678.0" layoutY="526.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbdiscount" layoutX="456.0" layoutY="526.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <stylesheets>
+            <URL value="@/resources/style.css" />
+         </stylesheets>
+      </AnchorPane>
+   </children>
+</AnchorPane>
+
