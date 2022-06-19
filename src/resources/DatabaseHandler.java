@@ -1878,4 +1878,120 @@ public class DatabaseHandler {
             ex.printStackTrace();
         }
     }
+    
+    public static void editPurchaseInvoice(PurchaseInvoiceHeader header, List<PurchaseInvoiceDetails> detailsList){
+        // update all products quantity
+        List<PurchaseInvoiceDetails> oldInvoiceDetailsList = getPurchaseInvoicesDetails(header.getId());
+        for(int i = 0 ; i < oldInvoiceDetailsList.size() ; i++)
+        {
+            PurchaseInvoiceDetails details = detailsList.get(i);
+            updateProductValues(details.getProductName(),
+                                getProductQTY(details.getProductName())-details.getProductQTY(),
+                                details.getProductCost());
+        }
+        
+        // delete all products from the purchase invoice details table
+        String deleteDetailsSQL = "DELETE FROM tbPurchaseInvoiceDetails WHERE id = " + header.getId() + " ;" ;
+        con = getConnection();
+        execUpdate(deleteDetailsSQL);
+        
+        // delete product movement with the  purchase invoice id
+        String deleteProductMovementSQL = "DELETE FROM tbProductMovement WHERE purchaseInvoiceID = " + header.getId() + " ;";
+        execUpdate(deleteProductMovementSQL);
+        
+        // update invoice header with the  new values
+        String updateHeaderSQL = "UPDATE tbPurchaseInvoiceHeader SET id = ?,SupplierID = ?,SupplierName= ?,date=?,Total=? "
+                                        + " WHERE id = ? ;";
+        try
+        {
+            PreparedStatement ps = con.prepareStatement(updateHeaderSQL);
+            ps.setInt(1, header.getId());
+            ps.setInt(2, header.getSupplierID());
+            ps.setString(3, header.getSupplierName());
+            ps.setString(4, header.getDate());
+            ps.setDouble(5, header.getPurchaeInvoiceTotalCost());
+            ps.setInt(6, header.getId());
+            ps.execute();
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
+        // save the new invoice details items
+          for(int i = 0; i<detailsList.size(); i++)
+        {
+            PurchaseInvoiceDetails purchaseInvoiceDetails = detailsList.get(i);
+            purchaseInvoiceDetails.setProductCode(getProductCode(purchaseInvoiceDetails.getProductName())); //adding the  product code here because it is not defined at purchase controller
+            String detailsSQL = "INSERT INTO tbPurchaseInvoiceDetails VALUES ("
+                + header.getId() + ","
+                + purchaseInvoiceDetails.getColNumber() +",'"
+                + purchaseInvoiceDetails.getProductCode() + "','"
+                + purchaseInvoiceDetails.getProductName() +"',"
+                + purchaseInvoiceDetails.getProductQTY() + ","
+                + purchaseInvoiceDetails.getProductCost() + ","
+                + purchaseInvoiceDetails.getProductTotalCost()
+                + ") ;";
+            
+            System.out.println(detailsSQL);
+            
+            execUpdate(detailsSQL);
+            
+            // update product cost with the  new value
+            
+            double oldProductQTY = getProductQTY(purchaseInvoiceDetails.getProductName());
+            
+            double oldCost = getProductCost(purchaseInvoiceDetails.getProductName());
+            System.out.println("oldCost = "+ oldCost);
+            double oldCostSum = oldProductQTY * oldCost;
+            System.out.println("oldCostSum = "+ oldCostSum);
+            
+            
+            double newCostFromPurchaseInvoice = purchaseInvoiceDetails.getProductCost();
+            double newProductQtyFromPurchaseInvoice = purchaseInvoiceDetails.getProductQTY();
+            double newCostSum = newCostFromPurchaseInvoice * newProductQtyFromPurchaseInvoice;
+            System.out.println("newCostSum = "+ newCostSum);
+            
+            
+            System.out.println("current product Cost = " +purchaseInvoiceDetails.getProductCost());
+            
+            
+            Product product = new Product();
+            product.setProductName(purchaseInvoiceDetails.getProductName());
+            product.setProductCode(purchaseInvoiceDetails.getProductCode());
+            
+            
+            // fixing Zero Qty Products cost bug
+            double newCost;
+            if(isProductQtyZero(product))
+                newCost = purchaseInvoiceDetails.getProductCost();
+            else
+                newCost = (oldCostSum + newCostSum) / (oldProductQTY + newProductQtyFromPurchaseInvoice) ;
+                
+            System.out.println("newCost = "+ newCost);
+            
+            DecimalFormat decimalFormat = new DecimalFormat("#.00");
+            
+            String updateCostSQL = "UPDATE tbProduct SET productCost = " +
+                    decimalFormat.format(newCost) +" WHERE productName = '"
+                    + purchaseInvoiceDetails.getProductName()
+                    + "' ;";
+            
+            System.out.println(updateCostSQL);
+            execUpdate(updateCostSQL);
+            
+            // update products table and set the  new quantities
+ 
+            double oldQTY = getProductQTY(purchaseInvoiceDetails.getProductName());
+            double newQTY = oldQTY + purchaseInvoiceDetails.getProductQTY();
+        
+            String updateQTySQl = "Update tbProduct SET productQuantity = "
+                    + newQTY 
+                    + " WHERE productName = '"
+                    + purchaseInvoiceDetails.getProductName() 
+                    +"';"; 
+            System.out.println(updateQTySQl);
+            execUpdate(updateQTySQl);
+         }
+    }
 }
