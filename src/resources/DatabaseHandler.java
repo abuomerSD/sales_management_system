@@ -1884,7 +1884,7 @@ public class DatabaseHandler {
         List<PurchaseInvoiceDetails> oldInvoiceDetailsList = getPurchaseInvoicesDetails(header.getId());
         for(int i = 0 ; i < oldInvoiceDetailsList.size() ; i++)
         {
-            PurchaseInvoiceDetails details = detailsList.get(i);
+            PurchaseInvoiceDetails details = oldInvoiceDetailsList.get(i);
             updateProductValues(details.getProductName(),
                                 getProductQTY(details.getProductName())-details.getProductQTY(),
                                 details.getProductCost());

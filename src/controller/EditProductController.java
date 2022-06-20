@@ -60,6 +60,8 @@ public class EditProductController implements Initializable {
     void editProduct(ActionEvent event) {
         DecimalFormat df = new DecimalFormat("#.0000");
         
+        txtProductCode.setDisable(true);
+        
         double cost = Double.valueOf(df.format(Double.valueOf(txtProductCost.getText())));
         double price = Double.valueOf(df.format(Double.valueOf(txtProductPrice.getText())));
         String code = txtProductCode.getText();

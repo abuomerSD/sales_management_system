@@ -7,8 +7,10 @@ package controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import model.PurchaseInvoiceDetails;
 import model.PurchaseInvoiceHeader;
@@ -28,6 +30,22 @@ public class EditPurchaseInvoiceController extends PurchaseInvoiceController imp
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    @Override
+    public void savePurchaseInvoice(ActionEvent event){
+        PurchaseInvoiceHeader header = new PurchaseInvoiceHeader();
+        List<PurchaseInvoiceDetails> detailsList = new ArrayList();
+        
+        header.setDate(txtDate.getValue().toString());
+        header.setId(Integer.valueOf(txtInvoiceNumber.getText()));
+        header.setPurchaeInvoiceTotalCost(Double.valueOf(txtPurchaseInvoiceTotal.getText()));
+        header.setSupplierID(DatabaseHandler.getSupplierID(choiceBoxSupplierName.getValue()));
+        header.setSupplierName(choiceBoxSupplierName.getValue());
+        
+        DatabaseHandler.editPurchaseInvoice(header, productsList);
+        btnSaveInvoice.setDisable(true);
+        
+    }
     
     public void getOldInvoiceData(PurchaseInvoiceHeader header)
     {
