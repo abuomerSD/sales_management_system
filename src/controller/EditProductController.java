@@ -29,6 +29,7 @@ public class EditProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        txtProductCode.setDisable(true);
     }  
     
     @FXML

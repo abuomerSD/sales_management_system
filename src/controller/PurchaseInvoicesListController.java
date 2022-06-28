@@ -98,7 +98,8 @@ public class PurchaseInvoicesListController implements Initializable {
             
             for (PurchaseInvoiceDetails details : purchaseInvoiceDetailsList) {
                 System.out.println("Updating " + details.getProductName());
-                DatabaseHandler.updateProductValues(details.getProductName(), DatabaseHandler.getProductQTY(details.getProductName()) - details.getProductQTY(), details.getProductCost());
+                double productPreviousCost = DatabaseHandler.getProductPrevoiusCost(details.getProductName());
+                DatabaseHandler.updateProductValues(details.getProductName(), DatabaseHandler.getProductQTY(details.getProductName()) - details.getProductQTY(), details.getProductCost(),productPreviousCost);
                 // adding product Movement
                      ProductMovement productMovement = new ProductMovement();
                      productMovement.setCurrentQuantity(DatabaseHandler.getProductQTY(details.getProductName()));

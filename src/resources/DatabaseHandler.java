@@ -161,6 +161,7 @@ public class DatabaseHandler {
                 + "productName VARCHAR(200)  NOT NULL,"
                 + "productQuantity DOUBLE,"
                 + "productCost DOUBLE,"
+                + "productPreviousCost DOUBLE,"
                 + "productPrice DOUBLE,"
                 + "UNIQUE(productCode),"
                 + "UNIQUE(productName) ) ;";
@@ -676,8 +677,9 @@ public class DatabaseHandler {
         }
     }
     
-    public static void updateProductValues(String productName, double newQTY, double newCost){
-        String qtySQL = "UPDATE tbProduct set productQuantity = "+ newQTY + " WHERE productName = '" + productName + "';";
+    public static void updateProductValues(String productName, double newQTY, double newCost, double previousCost){
+        String qtySQL = "UPDATE tbProduct set productQuantity = "+ newQTY + " , productCost = "+ previousCost 
+                + " WHERE productName = '" + productName + "';";
         try
         {
             System.out.println(qtySQL);
@@ -814,7 +816,7 @@ public class DatabaseHandler {
             DecimalFormat decimalFormat = new DecimalFormat("#.00");
             
             String updateCostSQL = "UPDATE tbProduct SET productCost = " +
-                    decimalFormat.format(newCost) +" WHERE productName = '"
+                    decimalFormat.format(newCost) +" ,productPreviousCost = "+ getProductCost(purchaseInvoiceDetails.getProductName()) +" WHERE productName = '"
                     + purchaseInvoiceDetails.getProductName()
                     + "' ;";
             
@@ -1993,5 +1995,23 @@ public class DatabaseHandler {
             System.out.println(updateQTySQl);
             execUpdate(updateQTySQl);
          }
+    }
+    
+    public static double getProductPrevoiusCost(String productName)
+    {
+        double cost = 0;
+        String sql = "SELECT * FROM tbProduct WHERE productName = "+ productName+" ;";
+        con = getConnection();
+        try{
+            ResultSet rs = execQuery(sql);
+            while(rs.next())
+            {
+                cost = rs.getDouble("productPreviousCost");
+            }
+        } catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return cost;
     }
 }

@@ -17,6 +17,7 @@ public class Product {
     private Double productQuantity;
     private Double productCost;
     private Double productPrice;
+    private Double productPreviousCost;
 
     public Product(String productCode, String productName, Double productQuantity, Double productCost, Double productPrice) {
         this.productCode = productCode;
@@ -69,6 +70,16 @@ public class Product {
     public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
+
+    public Double getProductPreviousCost() {
+        return productPreviousCost;
+    }
+
+    public void setProductPreviousCost(Double productPreviousCost) {
+        this.productPreviousCost = productPreviousCost;
+    }
+    
+    
 
     @Override
     public String toString() {
