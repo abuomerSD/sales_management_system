@@ -122,8 +122,9 @@ public class PurchaseInvoicesListController implements Initializable {
             for (PurchaseInvoiceDetails details : purchaseInvoiceDetailsList)
             {
                         int previousPurchaseInvoiceId = DatabaseHandler.getPreviousPurchaseInvoiceId(details.getProductName());
-                        double previousCost = DatabaseHandler.getPreviousProductCost(previousPurchaseInvoiceId, details.getProductName());
+                        double previousCost = DatabaseHandler.getProductPrevoiusCost(details.getProductName());
                         Product product = new Product();
+                        
                         product.setProductCost(previousCost);
                         product.setProductName(details.getProductName());
                         DatabaseHandler.updateProductCost(product);

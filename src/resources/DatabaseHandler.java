@@ -1887,9 +1887,11 @@ public class DatabaseHandler {
         for(int i = 0 ; i < oldInvoiceDetailsList.size() ; i++)
         {
             PurchaseInvoiceDetails details = oldInvoiceDetailsList.get(i);
+            double productPreviousCost = DatabaseHandler.getProductPrevoiusCost(details.getProductName());;
             updateProductValues(details.getProductName(),
                                 getProductQTY(details.getProductName())-details.getProductQTY(),
-                                details.getProductCost());
+                                details.getProductCost(),
+                                productPreviousCost);
         }
         
         // delete all products from the purchase invoice details table
@@ -2000,18 +2002,20 @@ public class DatabaseHandler {
     public static double getProductPrevoiusCost(String productName)
     {
         double cost = 0;
-        String sql = "SELECT * FROM tbProduct WHERE productName = "+ productName+" ;";
+        String sql = "SELECT * FROM tbProduct WHERE productName = '"+ productName+"' ;";
         con = getConnection();
+        ResultSet rs = execQuery(sql);
         try{
-            ResultSet rs = execQuery(sql);
             while(rs.next())
             {
                 cost = rs.getDouble("productPreviousCost");
+                System.out.println("previous cost = " + rs.getDouble("productPreviousCost"));
             }
         } catch(SQLException ex)
         {
             ex.printStackTrace();
         }
+        System.out.println("return " +cost);
         return cost;
     }
 }
